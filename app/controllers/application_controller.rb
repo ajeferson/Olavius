@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
 
+  def root
+    redirect_to new_user_session_path
+  end
+
 end
