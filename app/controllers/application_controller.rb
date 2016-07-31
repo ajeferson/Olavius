@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # Cancancan stuff
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to user_root_path, alert: exception.message
+  end
+
   def user_root_path
     user_path(current_user)
   end
