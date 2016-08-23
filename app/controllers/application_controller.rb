@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_root_path
-    user_path(current_user)
+    home_path
   end
 
   def configure_permitted_parameters

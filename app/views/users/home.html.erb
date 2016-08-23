@@ -1,0 +1,13 @@
+<h1>Olá, <%= current_user.name %></h1>
+
+<% if  current_user.admin? %>
+    <h2>Usuário administrador</h2>
+<% else %>
+    <h2>Perfil de usuário comum</h2>
+<% end %>
+
+<ul>
+  <li><%= link_to 'Perfil', user_path(current_user) %></li>
+  <li><%= link_to 'Configurações', settings_path %></li>
+  <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>
+</ul>
