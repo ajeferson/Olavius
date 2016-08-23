@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
+  enum role: [:user, :admin]
+
 end

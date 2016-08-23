@@ -7,7 +7,6 @@ class Ability
       return
     end
 
-
     can :manage, User, id: user.id
 
   end
