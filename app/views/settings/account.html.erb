@@ -1,0 +1,8 @@
+<h1>Configurações de conta</h1>
+
+<%= link_to 'Excluir conta',
+            account_settings_path,
+            method: :delete,
+            data: {
+                confirm: 'Sua conta será excluida. Deseja prosseguir?'
+            } %>

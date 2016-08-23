@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :settings, only: [:index] do
     get 'account', on: :collection
+    delete 'account', to: 'settings#account_destroy', on: :collection
   end
 
 end

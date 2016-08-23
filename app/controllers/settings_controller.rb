@@ -8,4 +8,12 @@ class SettingsController < ApplicationController
   # GET /settings/account
   def account; end
 
+  # DELETE /settings/account/destroy
+  def account_destroy
+    user = current_user
+    sign_out current_user
+    user.destroy!
+    redirect_to new_user_session_path
+  end
+
 end
