@@ -8,6 +8,7 @@ class Ability
     end
 
     can :manage, User, id: user.id
+    can :manage, Post, user_id: user.id
 
   end
 

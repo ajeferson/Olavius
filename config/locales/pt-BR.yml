@@ -69,4 +69,5 @@ pt-BR:
         password_confirmation: Confirmação de senha
         email: Email
         name: Nome
+        profile_picture: Foto
         reset_password_token: Token
