@@ -1,0 +1,7 @@
+<h3>Publicações</h3>
+
+<% @posts.each do |post| %>
+    <div>
+      <span><%= l(post.created_at, format: :short) %> - </span> <span><%= post.title %></span>
+    </div>
+<% end %>

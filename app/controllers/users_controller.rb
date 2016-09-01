@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   # GET /home
-  def home; end
+  def home
+    @posts = current_user.posts.order(created_at: :desc)
+  end
 
   # GET /users/:id
   def show; end

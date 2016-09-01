@@ -6,11 +6,8 @@ class PostsController < ApplicationController
 
   # POST /users/:user_id/posts
   def create
-    if @post.save
-      head 200
-    else
-      head 500
-    end
+    @post.save
+    @posts = @user.posts.order(created_at: :desc)
   end
 
 

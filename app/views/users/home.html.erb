@@ -12,9 +12,15 @@
   <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>
 </ul>
 
-<%= form_for Post.new, url: user_posts_path(current_user) do |f| %>
+<%= form_for Post.new, url: user_posts_path(current_user), remote: true do |f| %>
     <%= f.text_area :title, placeholder: 'O que você está pensando?', required: true %>
     <%= f.submit 'Publicar' %>
 <% end %>
+
+<hr />
+
+<div id="posts">
+  <%= render 'posts' %>
+</div>
 
 
