@@ -47,4 +47,5 @@ end
 
 gem 'devise'
 gem 'cancancan', '~> 1.10'
+gem 'carrierwave', '0.10.0'
 

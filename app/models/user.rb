@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
 
   enum role: [:user, :admin]
 
+  mount_uploader :profile_picture, ProfilePictureUploader
+
 end

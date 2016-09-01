@@ -1,1 +1,10 @@
-<h1>Perfil de <%= @user.name %></h1>
+<h1>Perfil</h1>
+
+<p>Nome: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+<% if @user.profile_picture? %>
+    <p><%= image_tag @user.profile_picture.url, height: 100 %></p>
+<% end %>
+
+
+<%= link_to 'Editar perfil', edit_user_path(@user) %>
