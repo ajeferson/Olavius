@@ -41,4 +41,24 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Action Mailer's config
+  config.action_mailer.default_url_options = {
+      host: '127.0.0.1',
+      port: '3000'
+  }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 465,
+      user_name:            'olavius.social@gmail.com',
+      password:             'welcometovalhalla',
+      authentication:       'plain',
+      ssl:                  :true,
+      tls:                  :true,
+      enable_starttls_auto: true
+  }
+
+  config.web_console.whiny_requests = false
+
 end
