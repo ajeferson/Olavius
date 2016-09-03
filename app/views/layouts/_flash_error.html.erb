@@ -1,0 +1,6 @@
+<% if flash[:alert].present? %>
+    <ul class="alert alert-danger alert-dismissible without-bullets" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <li><%= flash[:alert] %></li>
+    </ul>
+<% end %>
