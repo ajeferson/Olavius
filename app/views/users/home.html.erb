@@ -14,10 +14,14 @@
 
 <%= form_for Post.new, url: user_posts_path(current_user), remote: true do |f| %>
     <%= f.text_area :title, placeholder: 'O que você está pensando?', required: true %>
-    <%= f.submit 'Publicar' %>
+    <%= f.submit 'Publicar', class: 'btn btn-sm btn-primary' %>
 <% end %>
 
 <hr />
+
+<h3>Publicações</h3>
+
+<div class="messages"></div>
 
 <div id="posts">
   <%= render 'posts' %>

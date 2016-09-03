@@ -10,6 +10,11 @@ class PostsController < ApplicationController
     @posts = @user.posts.order(created_at: :desc)
   end
 
+  # PATCH /posts/:id
+  def update
+    @post.update(post_params)
+  end
+
   # DELETE /posts/:id
   def destroy
     @post.destroy

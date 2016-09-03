@@ -1,3 +1,8 @@
 $("div[data-id='<%= params[:id] %>']").fadeOut('slow', function() {
   $(this).remove();
+  $(".messages").html("<%= j(render(partial: 'layouts/messages_success', locals: {messages: ['Anúncio excluído com sucesso']})) %>");
+
+  // Show the none partial if there are no posts
+  
+
 });

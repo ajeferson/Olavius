@@ -1,19 +1,51 @@
-<h3>Publicações</h3>
-
 <% if @posts.any? %>
+
     <% @posts.each do |post| %>
+
         <div data-id="<%= post.id %>" style="margin-bottom: 10px">
-          <span><%= l(post.created_at, format: :short) %> - </span> <span><%= post.title %></span>
-          <span><%= link_to 'Excluir',
-                            post_path(post),
-                            method: :delete,
-                            class: 'btn btn-xs btn-danger',
-                            data: {
-                                confirm: 'O post será excluído. Deseja prosseguir?'
-                            },
-                            remote: true %></span>
+
+          <div class="info">
+            <span><%= l(post.created_at, format: :short) %> - </span>
+            <span class="post-title"><%= post.title %></span>
+
+            <%= form_for post, url: post_path(post), method: :patch, html: {class: 'hidden'}, remote: true do |f| %>
+                <%= f.text_area :title %>
+                <%= f.submit 'Salvar', class: 'btn btn-success btn-xs' %>
+                <span class="btn btn-xs btn-warning btn-post-cancel-edit">Cancelar</span>
+            <% end %>
+
+          </div>
+
+          <div class="options">
+
+            <span>
+              <span class="btn btn-xs btn-primary btn-post-edit" data-id="<%= post.id %>">
+                <i class="glyphicon glyphicon-pencil"></i>
+                Editar
+              </span>
+            </span>
+
+            <span>
+              <%= link_to post_path(post),
+                          method: :delete,
+                          class: 'btn btn-xs btn-danger',
+                          data: {
+                              confirm: 'O post será excluído. Deseja prosseguir?'
+                          },
+                          remote: true do %>
+                  <i class="glyphicon glyphicon-remove"></i>
+                  Excluir
+              <% end %>
+            </span>
+
+          </div>
+
         </div>
+
     <% end %>
+
 <% else %>
+
     <%= render partial: 'layouts/none', locals: {message: 'Nenhuma publicação'} %>
+
 <% end %>

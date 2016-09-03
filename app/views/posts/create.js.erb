@@ -1,2 +1,3 @@
 $("#post_title").val('');
 $("#posts").html("<%= j(render 'users/posts') %>");
+$(".messages").html("<%= j(render(partial: 'layouts/messages_success', locals: {messages: ['Publicação realizada com sucesso']})) %>");

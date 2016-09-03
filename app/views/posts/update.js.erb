@@ -1,0 +1,3 @@
+$("div[data-id='<%= params[:id] %>'] .info .post-title").text('<%= @post.title %>');
+$("div[data-id='<%= params[:id] %>'] form").addClass('hidden');
+$(".messages").html("<%= j(render(partial: 'layouts/messages_success', locals: {messages: ['Publicação atualizada com sucesso']})) %>");
