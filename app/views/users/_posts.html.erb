@@ -1,7 +1,19 @@
 <h3>Publicações</h3>
 
-<% @posts.each do |post| %>
-    <div>
-      <span><%= l(post.created_at, format: :short) %> - </span> <span><%= post.title %></span>
-    </div>
+<% if @posts.any? %>
+    <% @posts.each do |post| %>
+        <div data-id="<%= post.id %>" style="margin-bottom: 10px">
+          <span><%= l(post.created_at, format: :short) %> - </span> <span><%= post.title %></span>
+          <span><%= link_to 'Excluir',
+                            post_path(post),
+                            method: :delete,
+                            class: 'btn btn-xs btn-danger',
+                            data: {
+                                confirm: 'O post será excluído. Deseja prosseguir?'
+                            },
+                            remote: true %></span>
+        </div>
+    <% end %>
+<% else %>
+    <%= render partial: 'layouts/none', locals: {message: 'Nenhuma publicação'} %>
 <% end %>

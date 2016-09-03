@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   before_action :authenticate_user!
   load_and_authorize_resource :user
-  load_and_authorize_resource :post, through: :user
+  load_and_authorize_resource :post, through: :user, shallow: true
 
   # POST /users/:user_id/posts
   def create
@@ -10,6 +10,10 @@ class PostsController < ApplicationController
     @posts = @user.posts.order(created_at: :desc)
   end
 
+  # DELETE /posts/:id
+  def destroy
+    @post.destroy
+  end
 
   private
 

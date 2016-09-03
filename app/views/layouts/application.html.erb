@@ -8,12 +8,15 @@
 </head>
 <body>
 
+<div style="text-align: right; padding: 10px">
+  <%= link_to 'Início', home_path, class: 'btn btn-sm btn-primary' %>
+</div>
+
+<hr style="margin: 0;"/>
+
 <div class="container-fluid">
 
   <%= yield %>
-
-  <hr />
-  <%= link_to 'Início', home_path %>
 
 </div>
 
