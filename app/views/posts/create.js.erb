@@ -1,3 +1,2 @@
-$("#post_title").val('');
-$("#posts").html("<%= j(render 'users/posts') %>");
-$(".messages").html("<%= j(render(partial: 'layouts/messages_success', locals: {messages: ['Publicação realizada com sucesso']})) %>");
+$("#new_image").attr("action", "<%= post_images_path(@post) %>");
+<%= render partial: 'posts/post_finished', locals: {post: @post} %>

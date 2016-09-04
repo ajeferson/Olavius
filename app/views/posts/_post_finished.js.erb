@@ -1,0 +1,11 @@
+if(imagesApi.isUploadFinished()) {
+  imagesApi.clearImages(); // Clearing the images array;
+  $("#post_title").val(''); // Clearing the text in the text area;
+  $("#posts").prepend("<%= j(render(partial: 'posts/post', locals: {post: post})) %>"); // Prepending the new post;
+  $(".messages").html("<%= j(render(partial: 'layouts/messages_success', locals: {messages: ['Publicação realizada com sucesso']})) %>"); // Showing the success message;
+  $("#posts .none").remove(); // Removing the none message;
+  postsApi.unbindEvents();
+  postsApi.bindEvents();
+} else {
+  imagesApi.sendNextImage(); // Sending the next image;
+}

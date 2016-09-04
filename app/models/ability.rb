@@ -9,6 +9,7 @@ class Ability
 
     can :manage, User, id: user.id
     can :manage, Post, user_id: user.id
+    can :manage, Image, post: {user_id: user.id}
 
   end
 

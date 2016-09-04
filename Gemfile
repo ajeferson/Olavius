@@ -49,4 +49,5 @@ gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'carrierwave', '0.10.0'
 gem 'bootstrap-sass', '3.3.6'
+gem 'jquery-fileupload-rails', '0.4.7'
 

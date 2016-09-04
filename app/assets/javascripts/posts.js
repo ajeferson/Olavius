@@ -9,6 +9,11 @@ var postsApi = function() {
         $('.btn-post-cancel-edit').on('click', didClickOnPostCancelEditButton);
     }
 
+    function unbindEvents() {
+        $('.btn-post-edit').unbind();
+        $('.btn-post-cancel-edit').unbind();
+    }
+
     function didClickOnPostEditButton() {
         var id = $(this).data('id');
         $("div[data-id='" + id + "'] .info form").removeClass('hidden');
@@ -19,8 +24,10 @@ var postsApi = function() {
     }
 
     return {
-        init: init
-    }
+        init: init,
+        bindEvents: bindEvents,
+        unbindEvents: unbindEvents
+    };
 
 }();
 

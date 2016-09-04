@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :posts, only: [:create, :destroy, :update], shallow: true
+    resources :posts, only: [:create, :destroy, :update], shallow: true do
+      resources :images, only: [:create], shallow: true
+    end
   end
   get 'home', to: 'users#home'
 

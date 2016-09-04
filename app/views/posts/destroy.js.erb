@@ -1,9 +1,10 @@
 $("div[data-id='<%= params[:id] %>']").fadeOut('slow', function() {
+
   $(this).remove();
-  $(".messages").html("<%= j(render(partial: 'layouts/messages_success', locals: {messages: ['Anúncio excluído com sucesso']})) %>");
+  $(".messages").html("<%= j(render(partial: 'layouts/messages_success', locals: {messages: ['Publicação excluída com sucesso']})) %>");
 
   // Show the none partial if there are no posts
-  $posts = $("#posts");
+  var $posts = $("#posts");
   if($posts.children().length == 0) {
     $posts.html("<%= j(render(partial: 'layouts/none', locals: {message: 'Nenhuma publicação'})) %>");
   }
