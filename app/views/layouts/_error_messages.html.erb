@@ -1,0 +1,10 @@
+<% if resource.errors.any? %>
+    <ul class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <% resource.errors.messages.each do |key, values| %>
+          <% values.each do |value| %>
+              <li><strong><%= t("activerecord.attributes.#{resource.model_name.i18n_key.to_s}.#{key.to_s}")%></strong> <%= value %></li>
+          <% end %>
+      <% end %>
+    </ul>
+<% end %>

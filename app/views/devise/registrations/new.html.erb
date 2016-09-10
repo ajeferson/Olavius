@@ -1,34 +1,30 @@
-<h2>Criar Conta</h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-login'}) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+    <h2 class="form-login-heading">Inscrever-se</h2>
 
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %>
+    <div class="login-wrap">
+
+      <%= render partial: 'layouts/error_messages', locals: {resource: resource} %>
+
+      <%= f.text_field :name, class: 'form-control', placeholder: 'Nome completo', autofocus: true, required: true %>
+      <br />
+
+      <%= f.email_field :email, class: 'form-control', placeholder: 'Email', required: true %>
+      <br />
+
+      <%= f.password_field :password, class: 'form-control', placeholder: 'Senha', autocomplete: "off", required: true %>
+      <br />
+
+      <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirmação de senha', autocomplete: "off", required: true %>
+      <br />
+
+      <%= button_tag type: 'submit', class: 'btn btn-theme btn-block' do %>
+          <i class="fa fa-user"></i>
+          CONCLUIR
+      <% end %>
+
+      <%= link_to 'CANCELAR', new_user_session_path, class: 'btn btn-danger btn-block' %>
+
     </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> caracteres no mínimo)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit 'Registrar' %>
-    </div>
 <% end %>
-
-<%= render 'devise/shared/links' %>
