@@ -50,4 +50,6 @@ gem 'cancancan', '~> 1.10'
 gem 'carrierwave', '0.10.0'
 gem 'bootstrap-sass', '3.3.6'
 gem 'jquery-fileupload-rails', '0.4.7'
+gem 'font-awesome-rails', '4.6.3.1'
+gem 'backstretch-rails', '2.0.4'
 

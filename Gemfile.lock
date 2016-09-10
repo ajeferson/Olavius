@@ -39,6 +39,8 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.4.1)
       execjs
+    backstretch-rails (2.0.4)
+      railties (> 3.1)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -71,6 +73,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    font-awesome-rails (4.6.3.1)
+      railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -171,12 +175,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  backstretch-rails (= 2.0.4)
   bootstrap-sass (= 3.3.6)
   byebug
   cancancan (~> 1.10)
   carrierwave (= 0.10.0)
   coffee-rails (~> 4.1.0)
   devise
+  font-awesome-rails (= 4.6.3.1)
   jbuilder (~> 2.0)
   jquery-fileupload-rails (= 0.4.7)
   jquery-rails
