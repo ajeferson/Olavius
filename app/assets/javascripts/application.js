@@ -10,10 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require template/Chart
 //= require jquery
-//= require jquery_ujs
 //= require bootstrap
-//= require jquery-fileupload/basic
-//= require jquery-fileupload/vendor/tmpl
-//= require jquery.backstretch
-//= require_tree .
+//= require template/jquery.dcjqaccordion.2.7
+//= require jquery.scrollTo
+//= require jquery.nicescroll
+//= require jquery.sparkline
+//= require template/common-scripts
+//= require template/sparkline-chart
+//= require template/zabuto_calendar
