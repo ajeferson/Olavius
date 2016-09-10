@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require template/Chart
 //= require jquery
 //= require bootstrap
 //= require template/jquery.dcjqaccordion.2.7
