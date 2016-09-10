@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root 'application#root'
 
-  devise_for :users
+  devise_for :users, controllers: {
+      passwords: 'passwords'
+  }
 
   resources :users do
     resources :posts, only: [:create, :destroy, :update], shallow: true do
