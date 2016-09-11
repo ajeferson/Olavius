@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap
 //= require template/jquery.dcjqaccordion.2.7
+//= require jquery.backstretch
 //= require jquery.scrollTo
 //= require jquery.nicescroll
 //= require jquery.sparkline
