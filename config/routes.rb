@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       passwords: 'passwords'
   }
 
-  resources :users do
+  resources :users, except: [:show] do
     resources :posts, only: [:create, :destroy, :update], shallow: true do
       resources :images, only: [:create], shallow: true
     end
