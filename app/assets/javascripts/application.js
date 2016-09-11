@@ -21,5 +21,7 @@
 //= require template/common-scripts
 //= require template/sparkline-chart
 //= require template/zabuto_calendar
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 //= require images
 //= require posts
