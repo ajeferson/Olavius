@@ -5,9 +5,9 @@
     <ul class="sidebar-menu" id="nav-accordion">
 
       <p class="centered">
-        <a href="profile.html">
-          <%= image_tag current_user.profile_picture, class: 'img-circle', width: 60 %>
-        </a>
+        <%= link_to home_path do %>
+            <%= image_tag current_user.profile_picture, class: 'img-circle', width: 60 %>
+        <% end %>
       </p>
 
       <h5 class="centered"><%= current_user.short_name %></h5>

@@ -404,10 +404,11 @@ ul.sidebar-menu li a.active i {
 /* MAIN CONTENT CONFIGURATION */
 #main-content {
     margin-left: 210px;
+    min-height: calc(100vh - 38px);
 }
 
 .header, .footer {
-    min-height: 60px;
+    height: 60px;
     padding: 0 15px;
 }
 
