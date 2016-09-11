@@ -21,3 +21,5 @@
 //= require template/common-scripts
 //= require template/sparkline-chart
 //= require template/zabuto_calendar
+//= require images
+//= require posts
