@@ -12,5 +12,7 @@ class User < ActiveRecord::Base
   mount_uploader :profile_picture, ProfilePictureUploader
 
   has_many :posts, dependent: :destroy
+  has_many :guest_invitations, foreign_key: 'invitee_id', class_name: 'Invitation'
+  has_many :host_invitations, foreign_key: 'inviting_id', class_name: 'Invitation'
 
 end
