@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   # Invitations
   has_many :guest_invitations, foreign_key: 'invitee_id', class_name: 'Invitation'                     # Invitations this received
   has_many :host_invitations, foreign_key: 'inviting_id', class_name: 'Invitation'                     # Invitations this user made
-  has_many :invitation_host_users, through: :guest_invitations, source: 'inviting', class_name: 'User' # Users that invited this user
-  has_many :invitation_guest_users, through: :host_invitations, source: 'invitee', class_name: 'User'  # Users that were invited by this user
+  has_many :inviting_users, through: :guest_invitations, source: 'inviting', class_name: 'User'        # Users that invited this user
+  has_many :invited_users, through: :host_invitations, source: 'invitee', class_name: 'User'           # Users that were invited by this user
 
   # Friends
   has_many :friendships_a, foreign_key: 'user_a_id', class_name: 'Friendship'                          # Friendships by the user_a relation

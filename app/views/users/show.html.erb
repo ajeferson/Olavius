@@ -7,11 +7,31 @@
 <% end %>
 
 <% if @user == current_user %>
+
     <%= link_to 'Editar perfil', edit_user_path(@user) %>
+
 <% else %>
 
     <% if current_user.is_friend_with?(@user) %>
-        <% else %>
+
+        São amigos
+
+    <% elsif current_user.invited?(@user) %>
+
+        <%= button_to 'Cancelar Solicitação', invitation_path(current_user.invitation_for(@user)), method: :delete %>
+
+    <% elsif current_user.invited_by?(@user) %>
+
+        <p><%= button_to 'Aceitar Solicitação', accept_invitation_path(current_user.invitation_from(@user)), method: :post %></p>
+        <p><%= button_to 'Rejeitar Solicitação', invitation_path(current_user.invitation_from(@user)), method: :delete %></p>
+
+    <% else %>
+
+        <%= form_for current_user.host_invitations.build, url: user_invitations_path(current_user), method: :post do |f| %>
+            <%= f.hidden_field :invitee_id, value: @user.id %>
+            <%= f.submit 'Solicitar Amizade' %>
+        <% end %>
+
     <% end %>
 
 <% end %>
