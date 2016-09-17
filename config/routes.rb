@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
     resources :invitations, only: [:create, :destroy], shallow: true do
       post 'accept', on: :member
+      delete 'reject', on: :member
     end
 
   end

@@ -2,27 +2,33 @@ class InvitationsController < ApplicationController
 
   before_action :authenticate_user!
   load_and_authorize_resource :user
-  load_resource :invitation, only: [:destroy, :accept]
+  load_resource :invitation, only: [:destroy, :accept, :reject]
   before_action :load_invitation, only: [:create]
   authorize_resource :invitation
 
   # POST /users/:user_id/invitations
   def create
     @invitation.save
-    head 201
+    @user = @invitation.invitee
   end
 
   # DELETE /invitations/:id
   def destroy
     @invitation.destroy
-    head 200
+    @user = @invitation.invitee
   end
 
   # POST /invitations/:id/accept
   def accept
-    current_user.friendships_b.create(user_a: @invitation.inviting)
+    @user = @invitation.inviting
+    current_user.friendships_b.create(user_a: @user)
     @invitation.destroy
-    head 200
+  end
+
+  # DELETE /invitations/:id/reject
+  def reject
+    @invitation.destroy
+    @user = @invitation.inviting
   end
 
   private
