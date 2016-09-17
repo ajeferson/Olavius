@@ -32,6 +32,10 @@ def invitation_from(user)
   self.guest_invitations.where('inviting_id = ?', user.id).first
 end
 
+def friendship_with(user)
+  self.friendships_a.where('user_b_id = ?', user.id).first || self.friendships_b.where('user_a_id = ?', user.id).first
+end
+
 def is_friend_with?(user)
   self.friends.include?(user)
 end

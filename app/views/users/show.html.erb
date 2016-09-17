@@ -14,7 +14,7 @@
 
     <% if current_user.is_friend_with?(@user) %>
 
-        São amigos
+        <%= button_to 'Desfazer Amizade', friendship_path(current_user.friendship_with(@user)), method: :delete %>
 
     <% elsif current_user.invited?(@user) %>
 

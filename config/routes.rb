@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     end
 
   end
+
+  resources :friendships, only: [:destroy]
+
   get 'home', to: 'users#home'
 
   resources :settings, only: [:index] do
