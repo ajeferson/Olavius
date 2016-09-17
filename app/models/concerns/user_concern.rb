@@ -5,7 +5,9 @@ def short_name
 end
 
 def friends
-  self.friends_a + self.friends_b
+  User.where('id IN (?)',
+             self.friends_a.pluck(:id) + self.friends_b.pluck(:id))
+      .order(name: :asc)
 end
 
 def invitations

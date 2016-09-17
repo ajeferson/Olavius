@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     @posts = current_user.posts.order(created_at: :desc)
   end
 
+  # GET /users/:id/friends
+  def friends
+    @users = @user.friends
+  end
+
   # PATCH /users/:id
   def update
     if @user.update(user_params)

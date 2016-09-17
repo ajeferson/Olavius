@@ -1,0 +1,18 @@
+<h3>Amigos (<%= @users.count %>)</h3>
+
+<% if @users.any? %>
+
+    <ul>
+      <% @users.each do |user| %>
+          <li>
+            <%= image_tag user.profile_picture_url, height: 50 %>
+            <%= link_to user.name, user_path(user) %>
+          </li>
+      <% end %>
+    </ul>
+
+<% else %>
+
+    <%= render partial: 'layouts/none', locals: {message: 'Nenhum amigo'} %>
+
+<% end %>
