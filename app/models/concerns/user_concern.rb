@@ -42,4 +42,10 @@ def is_friend_with?(user)
   self.friends.include?(user)
 end
 
+def feed
+  user_ids = self.friends.pluck(:id)
+  user_ids << self.id
+  Post.where('user_id IN (?)', user_ids).order(created_at: :desc)
+end
+
 end

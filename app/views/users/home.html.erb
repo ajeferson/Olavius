@@ -14,26 +14,26 @@
 
   <div>
 
-    <h3>Publicações</h3>
-
-    <div class="messages"></div>
-
-    <div id="posts">
-      <%= render 'posts' %>
-    </div>
-
-  </div>
-
-  <hr />
-
-  <div>
-
     <div id="friends">
       <%= render partial:'friends', locals: {user: current_user} %>
     </div>
 
   </div>
 
+
+  <hr />
+
+  <div>
+
+    <h3>Publicações</h3>
+
+    <div class="messages"></div>
+
+    <div id="posts">
+      <%= render partial: 'posts', locals: {posts: @feed} %>
+    </div>
+
+  </div>
 
 
 

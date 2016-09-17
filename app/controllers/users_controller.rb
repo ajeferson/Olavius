@@ -5,7 +5,12 @@ class UsersController < ApplicationController
 
   # GET /home
   def home
-    @posts = current_user.posts.order(created_at: :desc)
+    @feed = current_user.feed
+  end
+
+  # GET /users/:id
+  def show
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   # GET /users/:id/friends

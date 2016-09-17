@@ -1,11 +1,9 @@
-<h1>Perfil</h1>
+<h1><%= @user.name %></h1>
 
-<p>Nome: <%= @user.name %></p>
 <p>Email: <%= @user.email %></p>
 <% if @user.profile_picture? %>
     <p><%= image_tag @user.profile_picture.url, height: 100 %></p>
 <% end %>
-
 
 <div id="messages"></div>
 
@@ -40,3 +38,7 @@
 <% end %>
 
 <%= render partial: 'users/friends', locals: {user: @user} %>
+
+<h3>Publicações</h3>
+
+<%= render partial: 'posts', locals: {posts: @posts} %>
