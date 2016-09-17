@@ -3,7 +3,7 @@
   <div class="publisher">
 
     <%= image_tag post.user.profile_picture_url, height: 50 %>
-    <strong><%= post.user.name %></strong>
+    <strong><%= link_to post.user.name, user_path(post.user) %></strong>
 
   </div>
 
@@ -11,6 +11,7 @@
 
     <span><%= l(post.created_at, format: :short) %> - </span>
     <span class="post-title"><%= post.title %></span>
+    <sub><%= link_to 'Visualizar', post_path(post) %></sub>
 
     <div>
       <% post.images.each do |image| %>
@@ -55,5 +56,17 @@
       </div>
 
   <% end %>
+
+  <h6>Comentários (<%= post.comments.count %>)</h6>
+
+  <% comments = post.comments.order(created_at: :desc) %>
+  <% comments = comments.limit(10) unless all_comments %>
+  <%= render partial: 'comments/comments', locals: {comments: comments, post_id: post.id} %>
+
+  <% unless all_comments %>
+  <span><%= link_to 'Ver todos', post_path(post) %></span>
+  <% end %>
+
+  <%= render partial: 'comments/create_comment', locals: {post: post} %>
 
 </div>

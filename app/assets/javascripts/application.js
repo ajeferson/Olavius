@@ -26,3 +26,4 @@
 //= require images
 //= require posts
 //= require notifications
+//= require comments

@@ -1,0 +1,6 @@
+<li>
+  <%= image_tag comment.user.profile_picture_url, height: 30 %>
+  <strong><%= comment.user.name %></strong> <%= l(comment.created_at, format: :short) %>:
+  <br />
+  <span><%= comment.body %></span>
+</li>

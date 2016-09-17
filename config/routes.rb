@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     post 'search', on: :collection
     get 'friends', on: :member
 
-    resources :posts, only: [:create, :destroy, :update], shallow: true do
+    resources :posts, only: [:create, :destroy, :update, :show], shallow: true do
       resources :images, only: [:create], shallow: true
     end
 
@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   end
 
   resources :friendships, only: [:destroy]
+
+  resources :posts, only: [] do
+    resources :comments, shallow: true
+  end
 
   get 'home', to: 'users#home'
 

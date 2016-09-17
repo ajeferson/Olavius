@@ -1,0 +1,5 @@
+<ul class="comments" data-post-id="<%= post_id %>">
+  <% comments.each do |comment| %>
+      <%= render partial: 'comments/comment', locals: {comment: comment} %>
+  <% end %>
+</ul>
