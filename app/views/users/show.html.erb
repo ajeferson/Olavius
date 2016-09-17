@@ -6,5 +6,12 @@
     <p><%= image_tag @user.profile_picture.url, height: 100 %></p>
 <% end %>
 
+<% if @user == current_user %>
+    <%= link_to 'Editar perfil', edit_user_path(@user) %>
+<% else %>
 
-<%= link_to 'Editar perfil', edit_user_path(@user) %>
+    <% if current_user.is_friend_with?(@user) %>
+        <% else %>
+    <% end %>
+
+<% end %>
