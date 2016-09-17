@@ -23,6 +23,7 @@ class InvitationsController < ApplicationController
   def accept
     @user = @invitation.inviting
     current_user.friendships_b.create(user_a: @user)
+    @user.notifications.create(notifiable: @invitation.invitee, kind: :friendship_accept)
     @invitation.destroy
   end
 
