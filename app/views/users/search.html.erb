@@ -1,0 +1,14 @@
+<h1>Resultados da pesquisa</h1>
+
+<% if @users.any? %>
+    <ul>
+      <% @users.each do |user| %>
+          <li>
+            <%= image_tag user.profile_picture.url, height: 50 %>
+            <%= link_to user.name, user_path(user) %>
+          </li>
+      <% end %>
+    </ul>
+<% else %>
+    <p>Nenhum usuário encontrado</p>
+<% end %>

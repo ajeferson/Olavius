@@ -15,4 +15,11 @@ class User < ActiveRecord::Base
   has_many :guest_invitations, foreign_key: 'invitee_id', class_name: 'Invitation'
   has_many :host_invitations, foreign_key: 'inviting_id', class_name: 'Invitation'
 
+
+  scope :search, -> (query)  {
+    where('lower(name) LIKE :query OR lower(email) LIKE :query',
+          query: "%#{(query || '').downcase}%")
+        .order(name: :asc)
+  }
+
 end

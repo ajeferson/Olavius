@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
 
   resources :users do
+    post 'search', on: :collection
     resources :posts, only: [:create, :destroy, :update], shallow: true do
       resources :images, only: [:create], shallow: true
     end

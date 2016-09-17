@@ -6,4 +6,8 @@ class ProfilePictureUploader < MasterUploader
     'uploads/users'
   end
 
+  def default_url(*args)
+    ActionController::Base.helpers.asset_path('default_profile_picture.png')
+  end
+
 end

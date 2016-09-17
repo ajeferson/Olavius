@@ -8,18 +8,18 @@ class UsersController < ApplicationController
     @posts = current_user.posts.order(created_at: :desc)
   end
 
-  # GET /users/:id
-  def show; end
-
-  # GEt /users/:id/edit
-  def edit; end
-
+  # PATCH /users/:id
   def update
     if @user.update(user_params)
       redirect_to user_root_path, notice: 'Perfil atualizado'
     else
       render :edit
     end
+  end
+
+  # POST /users/search
+  def search
+    @users = User.search(params[:search])
   end
 
   private
