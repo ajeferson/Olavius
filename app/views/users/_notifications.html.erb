@@ -1,0 +1,45 @@
+<ul class="dropdown-menu extended inbox">
+
+  <div class="notify-arrow notify-arrow-green"></div>
+
+  <li>
+    <% count = current_user.notifications.not_read.count %>
+    <p class="green">
+      <% if count > 0 %>
+          Você tem <%= pluralize(count, 'nova notificação', 'novas notificações') %>
+      <% else %>
+          Nenhuma nova notificação
+      <% end %>
+    </p>
+  </li>
+
+  <% current_user.notifications.limit(20).each do |notification| %>
+
+      <li>
+
+        <%= link_to polymorphic_path(notification.notifiable) do %>
+
+            <span class="photo">
+              <%= image_tag notification.image.url %>
+            </span>
+
+            <span class="subject">
+              <span class="from">
+                <%= notification.target_name %>
+              </span>
+              <span class="time"><%= notification.time %></span>
+            </span>
+
+            <span class="message"><%= notification.message %></span>
+
+        <% end %>
+
+      </li>
+
+  <% end %>
+
+  <li>
+    <%= link_to 'Ver todas', user_notifications_path(current_user) %>
+  </li>
+
+</ul>

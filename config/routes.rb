@@ -20,6 +20,10 @@ Rails.application.routes.draw do
       delete 'reject', on: :member
     end
 
+    resources :notifications, only: [:index] do
+      post 'clear', on: :collection
+    end
+
   end
 
   resources :friendships, only: [:destroy]

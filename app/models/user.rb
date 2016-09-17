@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
   has_many :friends_b, through: :friendships_a, source: 'user_b', class_name: 'User'                   # Friends by the user_b relation
   has_many :friends_a, through: :friendships_b, source: 'user_a', class_name: 'User'                   # Friends by the user_a relation
 
+  has_many :notifications, dependent: :destroy
+  has_many :targeted_notifications, class_name: 'Notification', foreign_key: 'notifiable_id', dependent: :destroy
+
   scope :search, -> (query)  {
     where('lower(name) LIKE :query OR lower(email) LIKE :query',
           query: "%#{(query || '').downcase}%")

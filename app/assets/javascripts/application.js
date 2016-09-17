@@ -25,3 +25,4 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require images
 //= require posts
+//= require notifications

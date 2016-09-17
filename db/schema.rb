@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917171009) do
+ActiveRecord::Schema.define(version: 20160917215950) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_a_id"
@@ -41,6 +41,19 @@ ActiveRecord::Schema.define(version: 20160917171009) do
 
   add_index "invitations", ["invitee_id"], name: "index_invitations_on_invitee_id"
   add_index "invitations", ["inviting_id"], name: "index_invitations_on_inviting_id"
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.boolean  "read",            default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "kind"
+  end
+
+  add_index "notifications", ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"

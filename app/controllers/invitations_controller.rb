@@ -10,6 +10,7 @@ class InvitationsController < ApplicationController
   def create
     @invitation.save
     @user = @invitation.invitee
+    @user.notifications.create(notifiable: @invitation.inviting, kind: :friendship_request)
   end
 
   # DELETE /invitations/:id

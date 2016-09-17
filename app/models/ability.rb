@@ -8,6 +8,7 @@ class Ability
     end
 
     can :manage, User, id: user.id
+    can :manage, Notification, user: {id: user.id}
     can :manage, Invitation, inviting_id: user.id
     can :manage, Invitation, invitee_id: user.id
     can :manage, Friendship, user_a_id: user.id
