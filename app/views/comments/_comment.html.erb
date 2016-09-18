@@ -1,6 +1,22 @@
-<li>
+<li data-comment-id="<%= comment.id %>">
   <%= image_tag comment.user.profile_picture_url, height: 30 %>
   <strong><%= comment.user.name %></strong> <%= l(comment.created_at, format: :short) %>:
   <br />
   <span><%= comment.body %></span>
+
+  <% if comment.belongs_to?(current_user) %>
+      <div>
+        <%= button_to comment_path(comment),
+                      class: 'btn btn-xs btn-danger',
+                      method: :delete,
+                      data: {
+                          confirm: 'O comentário será excluído. Confirmar ação?'
+                      },
+                      remote: true do %>
+            <i class="fa fa-remove"></i>
+            Excluir
+        <% end %>
+      </div>
+  <% end %>
+
 </li>

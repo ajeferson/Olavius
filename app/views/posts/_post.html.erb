@@ -57,7 +57,7 @@
 
   <% end %>
 
-  <h6>Comentários (<%= post.comments.count %>)</h6>
+  <h6>Comentários (<span class="comments-count"><%= post.comments.count %></span>)</h6>
 
   <% comments = post.comments.order(created_at: :desc) %>
   <% comments = comments.limit(10) unless all_comments %>

@@ -1,1 +1,2 @@
+commentsApi.clearCommentForm("<%= @post.id %>");
 commentsApi.prependComment("<%= j(render(partial: 'comments/comment', locals: {comment: @comment})) %>", "<%= @post.id %>");

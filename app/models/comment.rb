@@ -1,5 +1,7 @@
 class Comment < ActiveRecord::Base
 
+  include CommentConcern
+
   belongs_to :user
   belongs_to :post
 

@@ -17,8 +17,8 @@ class CommentsController < ApplicationController
 
   end
 
+  # DELETE /comments/:id
   def destroy
-
   end
 
   private
