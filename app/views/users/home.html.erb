@@ -7,7 +7,6 @@
 
   <%= form_for Image.new, url: '/', multipart: true, remote: true do |f| %>
       <%= file_field_tag 'image[image]', multiple: true %>
-      <%= f.submit 'Valhalla' %>
   <% end %>
 
   <hr />
