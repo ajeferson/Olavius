@@ -1,7 +1,7 @@
 <% if posts.any? %>
 
     <% posts.each do |post| %>
-        <%= render partial: 'posts/post', locals: {post: post, all_comments: false} %>
+        <%= render partial: 'posts/post', locals: {post: post, all_comments: false, remote_delete: true} %>
     <% end %>
 
 <% else %>

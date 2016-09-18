@@ -28,6 +28,7 @@
     <h3>Publicações</h3>
 
     <div class="messages"></div>
+    <%= render 'layouts/flash_success' %>
 
     <div id="posts">
       <%= render partial: 'posts', locals: {posts: @feed} %>

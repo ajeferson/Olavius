@@ -18,6 +18,14 @@ class PostsController < ApplicationController
   # DELETE /posts/:id
   def destroy
     @post.destroy
+    respond_to do |format|
+      format.html {
+        redirect_to home_path, notice: 'Publicação excluída com sucesso'
+      }
+      format.js {
+        render 'destroy'
+      }
+    end
   end
 
   private
