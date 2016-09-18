@@ -24,7 +24,7 @@ class Ability
       comment.post.belongs_to?(user) || comment.post.user.is_friend_with?(user)
     end
 
-    can :destroy, Comment, user: {id: user.id}
+    can :manage, Comment, user: {id: user.id}
 
     can :manage, Image, post: {user_id: user.id}
 

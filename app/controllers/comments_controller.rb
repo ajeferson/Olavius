@@ -4,21 +4,18 @@ class CommentsController < ApplicationController
   load_and_authorize_resource :post
   load_and_authorize_resource :comment, through: :post, shallow: true
 
-  def index
-
-  end
-
   # POST /posts/:post_id/comments
   def create
     @comment.save
   end
 
   def update
-
+    @comment.update(comment_params)
   end
 
   # DELETE /comments/:id
   def destroy
+    @comment.destroy
   end
 
   private

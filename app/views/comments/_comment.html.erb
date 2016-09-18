@@ -1,11 +1,38 @@
-<li data-comment-id="<%= comment.id %>">
+<li data-comment-id="<%= comment.id %>" style="margin-bottom: 30px">
+
   <%= image_tag comment.user.profile_picture_url, height: 30 %>
-  <strong><%= comment.user.name %></strong> <%= l(comment.created_at, format: :short) %>:
+
+  <strong><%= link_to comment.user.name, user_path(comment.user) %></strong> <%= l(comment.created_at, format: :short) %>:
+
   <br />
-  <span><%= comment.body %></span>
+
+  <span class="comment-body"><%= comment.body %></span>
+
 
   <% if comment.belongs_to?(current_user) %>
+
+      <%= form_for comment,
+                   url: comment_path(comment),
+                   method: :patch,
+                   html: {
+                       class: 'form-comment hidden'
+                   },
+                   data: {
+                       comment_id: comment.id
+                   },
+                   remote: true do |f| %>
+          <%= f.text_field :body, value: comment.body, autocomplete: 'off' %>
+          <%= f.submit 'Salvar', class: 'btn btn-xs btn-success' %>
+          <span class="btn btn-xs btn-warning btn-cancel-edit-comment">Cancelar</span>
+      <% end %>
+
       <div>
+
+        <span class="btn-edit-comment btn btn-xs btn-primary" data-comment-id="<%= comment.id %>">
+          <i class="fa fa-pencil"></i>
+          Editar
+        </span>
+
         <%= button_to comment_path(comment),
                       class: 'btn btn-xs btn-danger',
                       method: :delete,
@@ -16,7 +43,9 @@
             <i class="fa fa-remove"></i>
             Excluir
         <% end %>
+
       </div>
+
   <% end %>
 
 </li>

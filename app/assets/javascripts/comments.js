@@ -5,11 +5,9 @@ var commentsApi = function() {
         bindEvents();
     }
 
-    function cacheDOM() {
-    }
-
     function bindEvents() {
-
+        $('.btn-edit-comment').on('click', didClickOnEditCommentButton);
+        $('.btn-cancel-edit-comment').on('click', didClickOnCancelEditCommentButton);
     }
 
     function prependComment(commentHtml, postId) {
@@ -35,11 +33,33 @@ var commentsApi = function() {
         $("div[data-id='" + postId + "'] input[type='text']").val('');
     }
 
+    function didClickOnEditCommentButton() {
+        var id = $(this).data('comment-id');
+        $('.form-comment').addClass('hidden');
+        var $form = $("form[data-comment-id='" + id + "']");
+        $form.removeClass('hidden');
+    }
+
+    function didClickOnCancelEditCommentButton() {
+        $(this).closest('form').addClass('hidden');
+    }
+
+    function hideCommentEditForm(commentId) {
+        var $form = $("form[data-comment-id='" + commentId + "']");
+        $form.addClass('hidden');
+    }
+
+    function updateCommentBody(commentId, text) {
+        $("li[data-comment-id='" + commentId + "'] .comment-body").text(text)
+    }
+
     return {
         init: init,
         prependComment: prependComment,
         deleteComment: deleteComment,
-        clearCommentForm: clearCommentForm
+        clearCommentForm: clearCommentForm,
+        hideCommentEditForm: hideCommentEditForm,
+        updateCommentBody: updateCommentBody
     }
 
 }();

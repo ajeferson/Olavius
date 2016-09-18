@@ -60,7 +60,7 @@
   <h6>Comentários (<span class="comments-count"><%= post.comments.count %></span>)</h6>
 
   <% comments = post.comments.order(created_at: :desc) %>
-  <% comments = comments.limit(10) unless all_comments %>
+  <% comments = comments.limit(5) unless all_comments %>
   <%= render partial: 'comments/comments', locals: {comments: comments, post_id: post.id} %>
 
   <% unless all_comments %>
