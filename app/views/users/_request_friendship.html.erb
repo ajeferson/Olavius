@@ -1,4 +1,4 @@
 <%= form_for current_user.host_invitations.build, url: user_invitations_path(current_user), method: :post, remote: true do |f| %>
     <%= f.hidden_field :invitee_id, value: @user.id %>
-    <%= f.submit 'Solicitar Amizade' %>
+    <%= f.submit '+ Solicitar Amizade', :class=>'btn btn-theme' %>
 <% end %>

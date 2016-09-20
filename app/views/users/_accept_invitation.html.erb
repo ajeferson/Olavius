@@ -1,2 +1,2 @@
-<p><%= button_to 'Aceitar Solicitação', accept_invitation_path(current_user.invitation_from(@user)), method: :post, remote: true %></p>
-<p><%= button_to 'Rejeitar Solicitação', reject_invitation_path(current_user.invitation_from(@user)), method: :delete, remote: true %></p>
+<p><%= button_to 'Aceitar Solicitação', accept_invitation_path(current_user.invitation_from(@user)), method: :post, remote: true, :class=>'btn btn-theme' %></p>
+<p><%= button_to 'Rejeitar Solicitação', reject_invitation_path(current_user.invitation_from(@user)), method: :delete, remote: true, :class=>'btn btn-theme' %></p>

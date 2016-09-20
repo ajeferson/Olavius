@@ -785,8 +785,8 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	color: #ffffff;
 	font-size: 16px;
 	padding: 0 10px;
-	line-height: 60px;
-	height: 60px;
+	line-height: 40px;
+	height: 40px;
 	margin: 0;
 	background: #ff865c;
 	text-align: center;
@@ -1087,6 +1087,7 @@ PANELS CONFIGURATIONS
 	text-align: center;
 	background: #ffffff;
 	color: #ccd1d9;
+    height:auto;
 }
 
 .white-panel p {
@@ -1103,6 +1104,11 @@ PANELS CONFIGURATIONS
 .white-panel .small {
 	font-size: 10px;
 	color: #ccd1d9;
+}
+
+.white-panel .large {
+    font-size: 25px;
+    color: #ccd1d9;
 }
 
 .white-panel i {
