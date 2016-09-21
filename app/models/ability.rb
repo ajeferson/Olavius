@@ -39,6 +39,14 @@ class Ability
 
     can :show, Group
 
+    can :join, Group do |group|
+      !user.owner_of?(group) && !user.member_of?(group)
+    end
+
+    can :leave, Group do |group|
+      !user.owner_of?(group) && user.member_of?(group)
+    end
+
     can :manage, Comment, user: {id: user.id}
     can :manage, Like, user: {id: user.id}
     can :manage, Image, post: {user_id: user.id}

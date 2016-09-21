@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     end
 
     resources :groups, shallow: true do
-
+      post 'join', on: :member
+      delete 'leave', on: :member
     end
 
   end

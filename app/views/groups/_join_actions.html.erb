@@ -1,0 +1,7 @@
+<% unless current_user.owner_of?(@group) %>
+    <% if current_user.member_of?(@group) %>
+        <%= link_to 'Deixar grupo', leave_group_path(@group), method: :delete, class: 'btn btn-danger', remote: true %>
+    <% else %>
+        <%= link_to 'Ingressar no grupo', join_group_path(@group), method: :post, class: 'btn btn-primary', remote: true %>
+    <% end %>
+<% end %>

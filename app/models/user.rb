@@ -40,7 +40,8 @@ class User < ActiveRecord::Base
   has_many :reports, dependent: :destroy
 
   # Groups
-  has_many :groups, foreign_key: 'owner_id'
+  has_many :owned_groups, foreign_key: 'owner_id', class_name: 'Group'
+  has_and_belongs_to_many :groups, class_name: 'Group'
 
   scope :search, -> (query)  {
     where('lower(name) LIKE :query OR lower(email) LIKE :query',
