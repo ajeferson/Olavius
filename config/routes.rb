@@ -26,6 +26,10 @@ Rails.application.routes.draw do
       post 'clear', on: :collection
     end
 
+    resources :groups, shallow: true do
+
+    end
+
   end
 
   resources :friendships, only: [:destroy]

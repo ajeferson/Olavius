@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921202601) do
+ActiveRecord::Schema.define(version: 20160921222818) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "body"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20160921202601) do
 
   add_index "friendships", ["user_a_id"], name: "index_friendships_on_user_a_id"
   add_index "friendships", ["user_b_id"], name: "index_friendships_on_user_b_id"
+
+  create_table "groups", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "groups", ["owner_id"], name: "index_groups_on_owner_id"
 
   create_table "images", force: :cascade do |t|
     t.string   "image"
