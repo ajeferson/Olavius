@@ -56,4 +56,8 @@ def like_for(post)
   self.likes.where('post_id = ?', post.id).first
 end
 
+def is_owner_of?(group)
+  self.id == group.owner_id
+end
+
 end
