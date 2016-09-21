@@ -1,4 +1,5 @@
 <div class="col-lg-4 col-md-4 col-sm-4 mb">
+
   <div class="twitter-panel pn">
 
     <div class="btn-group" style="float:right;">
@@ -21,26 +22,12 @@
     <p class="infos"><a href="<%= post_url(post) %>"><%= l(post.created_at, format: :short) %></a></p>
     <p><%= post.title%></p>
 
-
-
-
-
   </div>
+
 </div><!-- /col-md-4 -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-<div data-id="<%= post.id %>" style="margin: 50px 0">
+<div class="post" data-id="<%= post.id %>" style="margin: 50px 0">
 
   <div class="publisher">
 
@@ -99,6 +86,12 @@
 
   <% end %>
 
+  <!--Likes-->
+  <div class="likes">
+    <%= render partial: 'likes/likes', locals: {post: post} %>
+  </div>
+
+  <!--Comments-->
   <h6>Comentários (<span class="comments-count"><%= post.comments.count %></span>)</h6>
 
   <% comments = post.comments.order(created_at: :desc) %>
@@ -106,7 +99,7 @@
   <%= render partial: 'comments/comments', locals: {comments: comments, post_id: post.id} %>
 
   <% unless all_comments %>
-  <span><%= link_to 'Ver todos', post_path(post) %></span>
+      <span><%= link_to 'Ver todos', post_path(post) %></span>
   <% end %>
 
   <%= render partial: 'comments/create_comment', locals: {post: post} %>

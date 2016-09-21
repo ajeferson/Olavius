@@ -48,4 +48,12 @@ def feed
   Post.where('user_id IN (?)', user_ids).order(created_at: :desc)
 end
 
+def liked?(post)
+  self.liked_posts.include?(post)
+end
+
+def like_for(post)
+  self.likes.where('post_id = ?', post.id).first
+end
+
 end
