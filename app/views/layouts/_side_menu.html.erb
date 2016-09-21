@@ -10,7 +10,13 @@
         <% end %>
       </p>
 
-      <h5 class="centered"><%= current_user.short_name %></h5>
+      <h5 class="centered">
+        <%= current_user.short_name %>
+      </h5>
+
+      <% if current_user.admin? %>
+          <h6 class="centered">Administrador</h6>
+      <% end %>
 
       <li class="mt">
         <%= link_to home_path do %>
@@ -32,6 +38,15 @@
             <span>Amigos</span>
         <% end %>
       </li>
+
+      <% if current_user.admin? %>
+          <li>
+            <%= link_to reports_path do %>
+                <i class="fa fa-archive"></i>
+                <span>Reports</span>
+            <% end %>
+          </li>
+      <% end %>
 
       <li>
         <%= link_to settings_path do %>

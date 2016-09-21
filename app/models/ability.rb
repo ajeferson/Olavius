@@ -7,6 +7,11 @@ class Ability
       return
     end
 
+    if user.admin?
+      can :manage, :all
+      return
+    end
+
     can :manage, User, id: user.id
     can :manage, Notification, user: {id: user.id}
     can :manage, Invitation, inviting_id: user.id
