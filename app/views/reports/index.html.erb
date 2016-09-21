@@ -1,15 +1,5 @@
 <h3>Reports</h3>
-<% if @reports.any? %>
-    <ul>
-      <% @reports.each do |report| %>
-          <li><%= link_to "Publicação ##{report.post_id}", post_path(report.post) %></li>
-          <li>Data: <%= l(report.created_at, format: :long) %></li>
-          <li>Razão: <%= t("activerecord.enums.report.reasons.#{report.reason}") %></li>
-          <% if report.body.present? %>
-              <li>Descrição: <%= report.body %></li>
-          <% end %>
-      <% end %>
-    </ul>
-<% else %>
-    <%= render partial: 'layouts/none', locals: {message: 'Nenhum report'} %>
-<% end %>
+
+<div class="reports">
+  <%= render 'reports' %>
+</div>

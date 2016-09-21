@@ -16,6 +16,12 @@ class ReportsController < ApplicationController
     @report.save
   end
 
+  # DELETE /reports/:id
+  def destroy
+    @report.destroy!
+    @reports = Report.all.order(created_at: :desc)
+  end
+
   private
 
   def report_params

@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :comments, shallow: true
   end
 
-  resources :reports, only: [:index, :show, :destroy]
+  resources :reports, only: [:index, :destroy]
 
   get 'home', to: 'users#home'
 

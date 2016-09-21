@@ -1,0 +1,30 @@
+<% if @reports.any? %>
+
+    <div class="messages"></div>
+
+    <ul>
+      <% @reports.each do |report| %>
+          <li style="margin-bottom: 30px">
+            <div><%= link_to "Publicação ##{report.post_id}", post_path(report.post) %></div>
+            <div>Data: <%= l(report.created_at, format: :long) %></div>
+            <div>Razão: <%= t("activerecord.enums.report.reasons.#{report.reason}") %></div>
+            <% if report.body.present? %>
+                <div>Descrição: <%= report.body %></div>
+            <% end %>
+            <%= link_to report_path(report),
+                        method: :delete,
+                        class: 'btn btn-xs btn-danger',
+                        data: {
+                            confirm: 'O report será excluído. Deseja prosseguir?'
+                        },
+                        remote: true do %>
+                <i class="glyphicon glyphicon-remove"></i>
+                Excluir
+            <% end %>
+          </li>
+      <% end %>
+    </ul>
+
+<% else %>
+    <%= render partial: 'layouts/none', locals: {message: 'Nenhum report'} %>
+<% end %>
