@@ -37,10 +37,12 @@ class Ability
       report.post.belongs_to?(user) || report.post.user.is_friend_with?(user)
     end
 
+    can :show, Group
+
     can :manage, Comment, user: {id: user.id}
     can :manage, Like, user: {id: user.id}
-
     can :manage, Image, post: {user_id: user.id}
+    can :manage, Group, owner_id: user.id
 
   end
 

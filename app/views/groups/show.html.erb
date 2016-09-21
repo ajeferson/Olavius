@@ -3,6 +3,20 @@
 <%= render 'layouts/flash_success' %>
 <%= render 'layouts/flash_error' %>
 
+<% if current_user.is_owner_of?(@group) %>
+    <%= link_to 'Editar Grupo', edit_group_path(@group), class: 'btn btn-primary' %>
+<% end %>
+
+<% if current_user.is_owner_of?(@group) || current_user.admin? %>
+    <%= link_to 'Excluir Grupo',
+                group_path(@group),
+                data: {
+                    confirm: 'O grupo será excluído. Deseja prosseguir?'
+                },
+                method: :delete,
+                class: 'btn btn-danger' %>
+<% end %>
+
 <div class="members"></div>
 
 <div class="posts"></div>
