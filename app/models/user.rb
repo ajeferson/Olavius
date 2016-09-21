@@ -39,6 +39,9 @@ class User < ActiveRecord::Base
   # Reports
   has_many :reports, dependent: :destroy
 
+  # Groups
+  has_many :groups, foreign_key: 'owner_id'
+
   scope :search, -> (query)  {
     where('lower(name) LIKE :query OR lower(email) LIKE :query',
           query: "%#{(query || '').downcase}%")

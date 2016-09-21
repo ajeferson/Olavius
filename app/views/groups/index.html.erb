@@ -1,0 +1,7 @@
+<h3>Grupos</h3>
+
+<%= link_to 'Novo Grupo', new_user_group_path(current_user), class: 'btn btn-primary' %>
+
+<div class="groups">
+  <%= render partial: 'groups', locals: {groups: @groups} %>
+</div>

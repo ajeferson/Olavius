@@ -39,6 +39,13 @@
         <% end %>
       </li>
 
+      <li>
+        <%= link_to user_groups_path(current_user) do %>
+            <i class="fa fa-users"></i>
+            <span>Grupos</span>
+        <% end %>
+      </li>
+
       <% if current_user.admin? %>
           <li>
             <%= link_to reports_path do %>
