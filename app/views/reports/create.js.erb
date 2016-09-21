@@ -1,0 +1,2 @@
+$("#modal_report_<%= @report.post.id %> .messages").html("<%= j(render(partial: 'layouts/messages_success', locals: {messages: ['Enviado com sucesso']})) %>");
+$("#modal_report_<%= @report.post.id %> textarea, select").val('')

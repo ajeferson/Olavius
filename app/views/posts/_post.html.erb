@@ -7,7 +7,7 @@
         Action <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="#">Action</a></li>
+        <li><a href="#modal_report_<%= post.id %>" data-toggle="modal">Reportar</a></li>
         <li><a href="#">Another action</a></li>
         <li><a href="#">Something else here</a></li>
         <li class="divider"></li>
@@ -103,5 +103,7 @@
   <% end %>
 
   <%= render partial: 'comments/create_comment', locals: {post: post} %>
+
+  <%= render partial: 'reports/modal_report', locals: {post: post} %>
 
 </div>

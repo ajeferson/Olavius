@@ -71,3 +71,11 @@ pt-BR:
         name: Nome
         profile_picture: Foto
         reset_password_token: Token
+      report:
+        reason: Razão
+        body: Descrição
+    enums:
+      report:
+        reasons:
+          copyright: Direitos Autorais
+          nudes: Nudes

@@ -24,8 +24,12 @@ class Ability
       comment.post.belongs_to?(user) || comment.post.user.is_friend_with?(user)
     end
 
-    can :create, Like do |comment|
-      comment.post.belongs_to?(user) || comment.post.user.is_friend_with?(user)
+    can :create, Like do |like|
+      like.post.belongs_to?(user) || like.post.user.is_friend_with?(user)
+    end
+
+    can :create, Report do |report|
+      report.post.belongs_to?(user) || report.post.user.is_friend_with?(user)
     end
 
     can :manage, Comment, user: {id: user.id}
