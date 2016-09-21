@@ -31,6 +31,18 @@ class GroupsController < ApplicationController
     redirect_to user_groups_path(current_user), notice: 'Grupo excluído com sucesso'
   end
 
+  # POST /groups/:id/join
+  def join
+    @group.users << current_user
+    @group.reload
+  end
+
+  # DELETE /groups/:id/leave
+  def leave
+    @group.users.delete(current_user)
+    @group.reload
+  end
+
   private
 
   def group_params
