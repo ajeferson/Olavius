@@ -1,4 +1,4 @@
-<div data-id="<%= post.id %>" style="margin: 50px 0">
+<div class="post" data-id="<%= post.id %>" style="margin: 50px 0">
 
   <div class="publisher">
 
@@ -57,6 +57,12 @@
 
   <% end %>
 
+  <!--Likes-->
+  <div class="likes">
+    <%= render partial: 'likes/likes', locals: {post: post} %>
+  </div>
+
+  <!--Comments-->
   <h6>Comentários (<span class="comments-count"><%= post.comments.count %></span>)</h6>
 
   <% comments = post.comments.order(created_at: :desc) %>
@@ -64,7 +70,7 @@
   <%= render partial: 'comments/comments', locals: {comments: comments, post_id: post.id} %>
 
   <% unless all_comments %>
-  <span><%= link_to 'Ver todos', post_path(post) %></span>
+      <span><%= link_to 'Ver todos', post_path(post) %></span>
   <% end %>
 
   <%= render partial: 'comments/create_comment', locals: {post: post} %>

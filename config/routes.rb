@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     resources :posts, only: [:create, :destroy, :update, :show], shallow: true do
       resources :images, only: [:create], shallow: true
+      resources :likes, only: [:create, :destroy]
     end
 
     resources :invitations, only: [:create, :destroy], shallow: true do

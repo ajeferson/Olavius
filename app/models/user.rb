@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
   # Comments
   has_many :comments, dependent: :destroy
 
+  # Likes
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: 'post', class_name: 'Post'
+
   scope :search, -> (query)  {
     where('lower(name) LIKE :query OR lower(email) LIKE :query',
           query: "%#{(query || '').downcase}%")
