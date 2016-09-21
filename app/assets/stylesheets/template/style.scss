@@ -1269,6 +1269,8 @@ PANELS CONFIGURATIONS
 .twitter-panel {
 	background: #4fc1e9;
 	text-align: center;
+    height:auto !important;
+    padding:15px 5px;
 }
 .twitter-panel i {
 	color: white;
@@ -1283,6 +1285,19 @@ PANELS CONFIGURATIONS
 	font-weight: 900;
 }
 
+.twitter-panel a {
+  color: white;
+}
+
+.twitter-panel .infos {
+  margin-top:-10px;
+  font-size:10px;
+}
+.twitter-panel .btn-theme {
+    margin-left:-450px;
+  font-size:10px;
+  padding:5px;
+}
 
 /* Instagram Panel*/
 .instagram-panel {
