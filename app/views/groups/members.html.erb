@@ -1,0 +1,13 @@
+<h3>Membros</h3>
+
+<ul>
+  <% @members.each do |member| %>
+      <li>
+        <%= image_tag member.profile_picture_url, height: 50 %>
+        <%= link_to member.name, user_path(member) %>
+        <% if member.owner_of?(@group) %>
+            (Owner)
+        <% end %>
+      </li>
+  <% end %>
+</ul>

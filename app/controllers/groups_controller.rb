@@ -1,10 +1,15 @@
 class GroupsController < ApplicationController
 
-  load_and_authorize_resource :owner, class: 'User'
-  load_and_authorize_resource :group, through: :user, shallow: true
+  before_action :authenticate_user!
+  load_and_authorize_resource :owner, class: 'User', only: [:new, :create]
+  load_and_authorize_resource :group, through: :owner, shallow: true, only: [:new, :create]
+
+  load_and_authorize_resource :user, except: [:new, :create]
+  load_and_authorize_resource :group, through: :user, shallow: true, except: [:new, :create]
 
   # GET /users/:user_id/groups
   def index
+    @groups = @user.all_groups
   end
 
   # POST /users/:user_id/groups
@@ -41,6 +46,11 @@ class GroupsController < ApplicationController
   def leave
     @group.users.delete(current_user)
     @group.reload
+  end
+
+  # GET /groups/:id/members
+  def members
+    @members = @group.all_members
   end
 
   private

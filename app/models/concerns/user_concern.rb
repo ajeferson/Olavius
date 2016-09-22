@@ -64,4 +64,14 @@ def member_of?(group)
   self.groups.include?(group)
 end
 
+def related_to?(group)
+  owner_of?(group) || member_of?(group)
+end
+
+def all_groups
+  group_ids = self.groups.pluck(:id) + self.owned_groups.pluck(:id)
+  Group.where('id IN (?)', group_ids).order(name: :asc)
+end
+
+
 end

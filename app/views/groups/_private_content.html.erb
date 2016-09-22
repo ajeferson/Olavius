@@ -1,0 +1,15 @@
+<div class="join-actions">
+  <% unless current_user.owner_of?(@group) %>
+      <% if current_user.member_of?(@group) %>
+          <%= link_to 'Deixar grupo', leave_group_path(@group), method: :delete, class: 'btn btn-danger', remote: true %>
+      <% else %>
+          <%= link_to 'Ingressar no grupo', join_group_path(@group), method: :post, class: 'btn btn-primary', remote: true %>
+      <% end %>
+  <% end %>
+</div>
+
+<div class="members">
+  <% if current_user.related_to?(@group) %>
+      <%= link_to "Membros(#{@group.users.count + 1})", members_group_path(@group) %>
+  <% end %>
+</div>
