@@ -1,7 +1,12 @@
-<% if groups.any? %>
+<% if @groups.any? %>
     <ul>
-      <% groups.each do |group| %>
-          <li><%= link_to group.name, group %></li>
+      <% @groups.each do |group| %>
+          <li>
+            <%= link_to group.name, group %>
+            <% if @user.owner_of?(group) %>
+                (Owner)
+            <% end %>
+          </li>
       <% end %>
     </ul>
 <% else %>
