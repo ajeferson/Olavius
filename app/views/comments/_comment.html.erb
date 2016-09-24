@@ -1,13 +1,45 @@
-<li data-comment-id="<%= comment.id %>" style="margin-bottom: 30px">
+<li class="col-lg-12" data-comment-id="<%= comment.id %>" style="margin-bottom: 30px; border-top:1px solid #4fcde9; border-bottom:1px solid #4fcde9; padding:10px 0 10px 0">
 
-  <%= image_tag comment.user.profile_picture_url, height: 30 %>
+  <%#= image_tag comment.user.profile_picture_url, height: 30 %>
 
-  <strong><%= link_to comment.user.name, user_path(comment.user) %></strong> <%= l(comment.created_at, format: :short) %>:
 
+
+  <span style="width:100%; text-align:left; color:#fff; float:left; margin:0 5px 0 5px"><strong><%= link_to comment.user.name, user_path(comment.user) %></strong></span>
+  <span style="width:100%; font-size:10px; color:rgba(242, 242, 242, 0.60); text-align:left;float:left;margin:0 5px 0 5px"><%= l(comment.created_at, format: :short) %></span>
   <br />
 
-  <span class="comment-body"><%= comment.body %></span>
 
+  <div class="row">
+
+
+    <div class="col-lg-9 col-md-9 col-sm-9 mb" style="">
+      <span class="comment-body" style="color:#fff; float:left;  text-align: left;"><%= comment.body %></span>
+    </div>
+
+
+  <div class="col-lg-3 col-md-3 col-sm-3 mb" style="">
+
+        <span style="float:left" class="btn-edit-comment btn btn-xs btn-primary" data-comment-id="<%= comment.id %>">
+          <i style="margin:0" class="fa fa-pencil"></i>
+
+        </span>
+
+    <%= button_to comment_path(comment),
+                  class: 'btn btn-xs btn-danger',
+                  method: :delete,
+                  data: {
+                      confirm: 'O comentário será excluído. Confirmar ação?'
+                  },
+                  remote: true do %>
+        <i style="margin:0" class="fa fa-remove"></i>
+
+    <% end %>
+
+  </div><!--comments edit and delete buttons area -->
+
+
+
+  </div><!--row-->
 
   <% if comment.belongs_to?(current_user) %>
 
@@ -26,26 +58,10 @@
           <span class="btn btn-xs btn-warning btn-cancel-edit-comment">Cancelar</span>
       <% end %>
 
-      <div>
-
-        <span class="btn-edit-comment btn btn-xs btn-primary" data-comment-id="<%= comment.id %>">
-          <i class="fa fa-pencil"></i>
-          Editar
-        </span>
-
-        <%= button_to comment_path(comment),
-                      class: 'btn btn-xs btn-danger',
-                      method: :delete,
-                      data: {
-                          confirm: 'O comentário será excluído. Confirmar ação?'
-                      },
-                      remote: true do %>
-            <i class="fa fa-remove"></i>
-            Excluir
-        <% end %>
-
-      </div>
 
   <% end %>
 
+
+
 </li>
+
