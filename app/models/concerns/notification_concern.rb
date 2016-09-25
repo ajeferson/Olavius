@@ -3,6 +3,7 @@ module NotificationConcern extend ActiveSupport::Concern
   def message
     return 'enviou-lhe uma solicitação de amizade' if friendship_request?
     return 'aceitou sua solicitação de amizade' if friendship_accept?
+    return 'comentou na sua publicação' if comment?
   end
 
   def image_url
