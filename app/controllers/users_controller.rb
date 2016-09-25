@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = @user.posts.where('group_id IS NULL').order(created_at: :desc)
   end
 
   # GET /users/:id/friends

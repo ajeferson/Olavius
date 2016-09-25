@@ -1,10 +1,12 @@
 <% if current_user.member_of?(@group) || current_user.owner_of?(@group)%>
 
+    <h3>Membros</h3>
+
     <div class="members">
-      <% if current_user.related_to?(@group) %>
-          <%= link_to "Membros(#{@group.users.count + 1})", members_group_path(@group) %>
-      <% end %>
+      <%= link_to "Membros(#{@group.users.count + 1})", members_group_path(@group) %>
     </div>
+
+    <hr />
 
     <%= form_for Post.new, url: user_posts_path(current_user), remote: true do |f| %>
         <%= f.hidden_field :group_id, value: @group.id %>
@@ -15,8 +17,6 @@
     <%= form_for Image.new, url: '/', multipart: true, remote: true do |f| %>
         <%= file_field_tag 'image[image]', multiple: true %>
     <% end %>
-
-    <hr />
 
     <div>
 
