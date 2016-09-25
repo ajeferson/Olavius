@@ -32,6 +32,12 @@ class UsersController < ApplicationController
     @users = User.search(params[:search])
   end
 
+  # DELETE /users/:id
+  def destroy
+    @user.destroy
+    redirect_to home_path, notice: 'Usuário excluído com sucesso'
+  end
+
   private
 
   def user_params

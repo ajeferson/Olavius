@@ -168,3 +168,6 @@
     <%= render partial: 'posts', locals: {posts: @posts} %>
 <% end %>
 
+<% if current_user.admin? && current_user.id != @user.id %>
+    <%= link_to 'Excluir Usuário', user_path(@user), method: :delete, class: 'btn btn-danger', data: {confirm: 'O usuário será excluído. Deseja prosseguir?'} %>
+<% end %>
