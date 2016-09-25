@@ -13,3 +13,15 @@
       <%= link_to "Membros(#{@group.users.count + 1})", members_group_path(@group) %>
   <% end %>
 </div>
+
+<%= form_for Post.new, url: user_posts_path(current_user), remote: true do |f| %>
+    <%= f.hidden_field :group_id, value: @group.id %>
+    <%= f.text_area :title, placeholder: 'O que você está pensando?', required: true %>
+    <%= f.submit 'Publicar', class: 'btn btn-sm btn-primary' %>
+<% end %>
+
+<%= form_for Image.new, url: '/', multipart: true, remote: true do |f| %>
+    <%= file_field_tag 'image[image]', multiple: true %>
+<% end %>
+
+<div class="posts"></div>
