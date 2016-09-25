@@ -1,209 +1,111 @@
 <div class="post" data-id="<%= post.id %>">
 
-<div class="col-lg-4 col-md-4 col-sm-4 mb">
+  <div class="col-lg-4 col-md-4 col-sm-4 mb">
 
-  <div class="twitter-panel pn">
+    <div class="twitter-panel pn">
 
-    <!--Botao de acoes -->
-    <% if post.belongs_to?(current_user) || current_user.admin? %>
+      <!--Botao de acoes -->
+      <% if post.belongs_to?(current_user) || current_user.admin? %>
 
-    <div class="btn-group" style="float:right;">
-      <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-cog" aria-hidden="true" style="margin:0"></i>
-         <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="#modal_report_<%= post.id %>" data-toggle="modal">Reportar</a></li>
+          <div class="btn-group" style="float:right;">
+            <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-cog" aria-hidden="true" style="margin:0"></i>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#modal_report_<%= post.id %>" data-toggle="modal">Reportar</a></li>
 
-        <li><%= link_to post_path(post),
-                    method: :delete,
-                    data: {
-                        confirm: 'O post será excluído. Deseja prosseguir?'
-                    },
-                    remote: remote_delete do %>
-            Excluir post
-        <% end %></li>
+              <li><%= link_to post_path(post),
+                              method: :delete,
+                              data: {
+                                  confirm: 'O post será excluído. Deseja prosseguir?'
+                              },
+                              remote: remote_delete do %>
+                    Excluir post
+                <% end %></li>
 
 
 
 
-      <li>
-        <a><span class="btn-post-edit" data-id="<%= post.id %>">Editar</span></a>
-      </li>
+              <li>
+                <a><span class="btn-post-edit" data-id="<%= post.id %>">Editar</span></a>
+              </li>
 
 
-      </ul>
-    </div>
+            </ul>
+          </div>
 
-    <% end %>
-
-
-
-
-    <% if post.belongs_to?(current_user) || current_user.admin? %><div style="margin-left:40px">
-    <% else%><div><%end%>
-
-    <%= image_tag post.user.profile_picture_url, height: 50, class:'img-circle'%>
-    </div>
-    <p class="user"><%= post.user.name%></p>
-    <p class="infos"><a href="<%= post_url(post) %>"><%= l(post.created_at, format: :short) %></a></p>
-    <p><%= post.title%></p>
-
-    <div class="info">
-    <% if post.belongs_to?(current_user) %>
-        <%= form_for post, url: post_path(post), method: :patch, html: {class: 'hidden'}, remote: true do |f| %>
-            <%= f.text_area :title, :class=>'form-control' %>
-            <div class="controls-edit" style="float:right; margin:5px 0 0 0">
-            <%= f.submit 'Salvar', class: 'btn btn-success btn-xs' %>
-            <span class="btn btn-xs btn-warning btn-post-cancel-edit">Cancelar</span>
-            </div>
-        <% end %>
-    <% end %>
-    </div>
-
-
-    <p></p>
-
-    <!--Likes-->
-
-    <div class="likes" style="margin-top:-30px">
-      <%= render partial: 'likes/likes', locals: {post: post} %>
-    </div>
-
-
-
-
-
-
-    <!--Comments-->
-    <span class="comments-count" style="color:#fff"><i class="fa fa-comment" aria-hidden="true" style="margin:10px 5px 10px 0"></i><%= post.comments.count %> Comentários</span>
-    <%= render partial: 'comments/create_comment', locals: {post: post} %>
-
-
-
-
-
-
-    <% comments = post.comments.order(created_at: :desc) %>
-    <% comments = comments.limit(5) unless all_comments %>
-    <%= render partial: 'comments/comments', locals: {comments: comments, post_id: post.id} %>
-
-    <% unless all_comments %>
-        <span><%= link_to 'Ver todos', post_path(post) %></span>
-    <% end %>
-
-
-    <%= render partial: 'reports/modal_report', locals: {post: post} %>
-
-
-
-
-
-    </div><!-- alguma div que fecha o quadrado azul, deve ser a do twitter, but i'm not sure :/ -->
-
-
-
-</div><!-- /col-md-4 -->
-
-
-</div><!--post end-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<% if true%>
-
-
-<div class="post" data-id="<%= post.id %>" style="margin: 50px 0">
-
-  <div class="publisher">
-
-    <%= image_tag post.user.profile_picture_url, height: 50 %>
-    <strong><%= link_to post.user.name, user_path(post.user) %></strong>
-
-  </div>
-
-  <div class="info">
-
-    <span><%= l(post.created_at, format: :short) %> - </span>
-    <span class="post-title"><%= post.title %></span>
-    <sub><%= link_to 'Visualizar', post_path(post) %></sub>
-
-    <div>
-      <% post.images.each do |image| %>
-          <%= image_tag image.image.url, size: '100x100', style: 'object-fit: cover;' %>
       <% end %>
-    </div>
 
-    <% if post.belongs_to?(current_user) %>
-        <%= form_for post, url: post_path(post), method: :patch, html: {class: 'hidden'}, remote: true do |f| %>
-            <%= f.text_area :title %>
-            <%= f.submit 'Salvar', class: 'btn btn-success btn-xs' %>
-            <span class="btn btn-xs btn-warning btn-post-cancel-edit">Cancelar</span>
+
+
+
+      <% if post.belongs_to?(current_user) || current_user.admin? %><div style="margin-left:40px">
+      <% else%><div><%end%>
+
+      <%= image_tag post.user.profile_picture_url, height: 50, class:'img-circle'%>
+      </div>
+      <p class="user"><%= post.user.name%></p>
+      <p class="infos"><a href="<%= post_url(post) %>"><%= l(post.created_at, format: :short) %></a></p>
+      <p><%= post.title%></p>
+
+      <div class="info">
+        <% if post.belongs_to?(current_user) %>
+            <%= form_for post, url: post_path(post), method: :patch, html: {class: 'hidden'}, remote: true do |f| %>
+                <%= f.text_area :title, :class=>'form-control' %>
+                <div class="controls-edit" style="float:right; margin:5px 0 0 0">
+                  <%= f.submit 'Salvar', class: 'btn btn-success btn-xs' %>
+                  <span class="btn btn-xs btn-warning btn-post-cancel-edit">Cancelar</span>
+                </div>
+            <% end %>
         <% end %>
-    <% end %>
-
-  </div>
-
-  <% if post.belongs_to?(current_user) || current_user.admin? %>
-
-      <div class="options">
-
-        <span>
-          <span class="btn btn-xs btn-primary btn-post-edit" data-id="<%= post.id %>">
-            <i class="glyphicon glyphicon-pencil"></i>
-            Editar
-          </span>
-        </span>
-
-        <span>
-          <%= link_to post_path(post),
-                      method: :delete,
-                      class: 'btn btn-xs btn-danger',
-                      data: {
-                          confirm: 'O post será excluído. Deseja prosseguir?'
-                      },
-                      remote: remote_delete do %>
-              <i class="glyphicon glyphicon-remove"></i>
-              Excluir
-          <% end %>
-        </span>
-
       </div>
 
-  <% end %>
 
-  <!--Likes-->
-  <div class="likes">
-    <%= render partial: 'likes/likes', locals: {post: post} %>
-  </div>
+      <p></p>
 
-  <!--Comments-->
-  <h6>Comentários (<span class="comments-count"><%= post.comments.count %></span>)</h6>
+      <!--Likes-->
 
-  <% comments = post.comments.order(created_at: :desc) %>
-  <% comments = comments.limit(5) unless all_comments %>
-  <%= render partial: 'comments/comments', locals: {comments: comments, post_id: post.id} %>
+      <div class="likes" style="margin-top:-30px">
+        <%= render partial: 'likes/likes', locals: {post: post} %>
+      </div>
 
-  <% unless all_comments %>
-      <span><%= link_to 'Ver todos', post_path(post) %></span>
-  <% end %>
 
-  <%= render partial: 'comments/create_comment', locals: {post: post} %>
 
-  <%= render partial: 'reports/modal_report', locals: {post: post} %>
+
+
+
+      <!--Comments-->
+      <span class="comments-count" style="color:#fff"><i class="fa fa-comment" aria-hidden="true" style="margin:10px 5px 10px 0"></i><%= post.comments.count %> Comentários</span>
+      <%= render partial: 'comments/create_comment', locals: {post: post} %>
+
+
+
+
+
+
+      <% comments = post.comments.order(created_at: :desc) %>
+      <% comments = comments.limit(5) unless all_comments %>
+      <%= render partial: 'comments/comments', locals: {comments: comments, post_id: post.id} %>
+
+      <% unless all_comments %>
+          <span><%= link_to 'Ver todos', post_path(post) %></span>
+      <% end %>
+
+
+      <%= render partial: 'reports/modal_report', locals: {post: post} %>
+
+
+
+
+
+      </div><!-- alguma div que fecha o quadrado azul, deve ser a do twitter, but i'm not sure :/ -->
+
+
+
+    </div><!-- /col-md-4 -->
+
+
+  </div><!--post end-->
 
 </div>
-
-  <%end%>
