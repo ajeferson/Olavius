@@ -22,11 +22,11 @@ class Ability
     can :manage, Post, user_id: user.id
 
     can :read, Post do |post|
-      post.belongs_to?(user) || post.user.is_friend_with?(user)
+      post.belongs_to?(user) || post.user.is_friend_with?(user) || (post.group_id.present? && user.related_to?(post.group))
     end
 
     can :create, Comment do |comment|
-      comment.post.belongs_to?(user) || comment.post.user.is_friend_with?(user)
+      comment.post.belongs_to?(user) || comment.post.user.is_friend_with?(user) ||  (comment.post.group_id.present? && user.related_to?(comment.post.group))
     end
 
     can :create, Like do |like|
@@ -34,7 +34,7 @@ class Ability
     end
 
     can :create, Report do |report|
-      report.post.belongs_to?(user) || report.post.user.is_friend_with?(user)
+      report.post.belongs_to?(user) || report.post.user.is_friend_with?(user) || (report.post.group_id.present? && user.related_to?(report.post.group))
     end
 
     can :show, Group

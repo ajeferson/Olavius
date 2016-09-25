@@ -1,27 +1,31 @@
-<div class="join-actions">
-  <% unless current_user.owner_of?(@group) %>
-      <% if current_user.member_of?(@group) %>
-          <%= link_to 'Deixar grupo', leave_group_path(@group), method: :delete, class: 'btn btn-danger', remote: true %>
-      <% else %>
-          <%= link_to 'Ingressar no grupo', join_group_path(@group), method: :post, class: 'btn btn-primary', remote: true %>
+<% if current_user.member_of?(@group) || current_user.owner_of?(@group)%>
+
+    <div class="members">
+      <% if current_user.related_to?(@group) %>
+          <%= link_to "Membros(#{@group.users.count + 1})", members_group_path(@group) %>
       <% end %>
-  <% end %>
-</div>
+    </div>
 
-<div class="members">
-  <% if current_user.related_to?(@group) %>
-      <%= link_to "Membros(#{@group.users.count + 1})", members_group_path(@group) %>
-  <% end %>
-</div>
+    <%= form_for Post.new, url: user_posts_path(current_user), remote: true do |f| %>
+        <%= f.hidden_field :group_id, value: @group.id %>
+        <%= f.text_area :title, placeholder: 'O que você está pensando?', required: true %>
+        <%= f.submit 'Publicar', class: 'btn btn-sm btn-primary' %>
+    <% end %>
 
-<%= form_for Post.new, url: user_posts_path(current_user), remote: true do |f| %>
-    <%= f.hidden_field :group_id, value: @group.id %>
-    <%= f.text_area :title, placeholder: 'O que você está pensando?', required: true %>
-    <%= f.submit 'Publicar', class: 'btn btn-sm btn-primary' %>
+    <%= form_for Image.new, url: '/', multipart: true, remote: true do |f| %>
+        <%= file_field_tag 'image[image]', multiple: true %>
+    <% end %>
+
+    <hr />
+
+    <div>
+
+      <h3>Publicações</h3>
+
+      <div id="posts">
+        <%= render partial: 'users/posts', locals: {posts: @posts} %>
+      </div>
+
+    </div>
+
 <% end %>
-
-<%= form_for Image.new, url: '/', multipart: true, remote: true do |f| %>
-    <%= file_field_tag 'image[image]', multiple: true %>
-<% end %>
-
-<div class="posts"></div>

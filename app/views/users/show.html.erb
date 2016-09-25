@@ -14,23 +14,20 @@
 
             </div>
 
-            <p> <%= image_tag @user.profile_picture.url, height: 100, class:"img-circle"%></p>
-            <p class="large mt"><b><%= @user.name %></b></p>
+            <p>
+              <%= image_tag @user.profile_picture.url, height: 100, class: 'img-circle' %>
+            </p>
+
+            <p class="large mt">
+              <b><%= @user.name %></b>
+            </p>
+
             <div class="row">
-
-
-
-
-
-
-
 
               <div class="col-md-4" style="margin-top:20px">
 
                 <% if @user == current_user %>
-
                     <%= link_to 'Editar perfil', edit_user_path(@user) %>
-
                 <% else %>
 
                     <div id="friendship">
@@ -57,25 +54,14 @@
 
                 <% end %>
 
-
-
-                <!--<button tpe="button" class="btn btn-theme"><i class="fa fa-plus"></i> Adicionar amigo</button>-->
               </div>
 
 
-
-
-
-
-
-
-
-
-
-
               <div class="col-md-4 ds" style="">
+
                 <!-- USERS ONLINE SECTION -->
                 <h3 style="border-radius:10px">AMIGOS</h3>
+
                 <!-- First Member -->
                 <div class="desc">
                   <div class="thumb">
@@ -87,50 +73,39 @@
                     </p>
                   </div>
                 </div>
+
                 <!-- Second Member -->
                 <div class="desc">
+
                   <div class="thumb">
                     <img class="img-circle" src="assets/img/ui-sherman.jpg" width="35px" height="35px" align="">
                   </div>
+
                   <div class="details">
                     <p><a href="#">DJ SHERMAN</a><br/>
                       <muted>I am Busy</muted>
                     </p>
                   </div>
+
                 </div>
 
-
-
-
-
               </div>
-
-
-
-
-
-
-
-
-
 
               <div class="col-md-4" style="margin-top:20px">
                 <p class="small mt">TOTAL SPEND</p>
                 <p>$ 47,60</p>
               </div>
 
-
-
-
             </div>
+
           </div>
+
         </div><!-- /col-md-4 -->
 
-
-
-
       </div>
+
     </div>
+
   </div>
 
 
@@ -138,43 +113,7 @@
       <%= render partial: 'posts', locals: {posts: @posts} %>
   <% end %>
 
-  <%= link_to 'Grupos', user_groups_path(@user), class: 'btn btn-primary' %>
-
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <h1><%= @user.name %></h1>
@@ -218,6 +157,10 @@
 <% end %>
 
 <%= render partial: 'users/friends', locals: {user: @user} %>
+
+<h3>Grupos</h3>
+
+<%= link_to 'Grupos', user_groups_path(@user), class: 'btn btn-primary' %>
 
 <h3>Publicações</h3>
 

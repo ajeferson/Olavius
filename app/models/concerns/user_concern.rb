@@ -45,7 +45,7 @@ end
 def feed
   user_ids = self.friends.pluck(:id)
   user_ids << self.id
-  Post.where('user_id IN (?)', user_ids).order(created_at: :desc)
+  Post.where('user_id IN (?) AND group_id IS NULL', user_ids).order(created_at: :desc)
 end
 
 def liked?(post)

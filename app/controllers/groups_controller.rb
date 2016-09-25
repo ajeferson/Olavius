@@ -7,6 +7,8 @@ class GroupsController < ApplicationController
   load_and_authorize_resource :user, except: [:new, :create]
   load_and_authorize_resource :group, through: :user, shallow: true, except: [:new, :create]
 
+  before_action :set_posts, only: [:show, :join]
+
   # GET /users/:user_id/groups
   def index
     @groups = @user.all_groups
@@ -57,6 +59,10 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :description)
+  end
+
+  def set_posts
+    @posts = @group.posts.order(created_at: :desc)
   end
 
 end
