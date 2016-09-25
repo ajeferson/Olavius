@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   # Notifications
   has_many :notifications, dependent: :destroy
-  has_many :targeted_notifications, class_name: 'Notification', foreign_key: 'notifiable_id', dependent: :destroy
+  has_many :targeted_notifications, class_name: 'Notification', foreign_key: 'target_id', dependent: :destroy
 
   # Comments
   has_many :comments, dependent: :destroy
