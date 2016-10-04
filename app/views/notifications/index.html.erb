@@ -1,22 +1,74 @@
-<h3>Notificações</h3>
 
 <% if @notifications.any? %>
 
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="wrapper">
+
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="content-panel">
+          <h4><i class="fa fa-angle-right"></i> Notificações</h4>
+          <hr>
+          <table class="table">
+            <thead>
+            <tr>
+              <th></th>
+              <th>Usuário</th>
+              <th>Notificação</th>
+              <th>Data</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            <% @notifications.each do |notification| %>
+            <tr>
+              <td></td>
+              <td><%= link_to notification.target_name, polymorphic_path(notification.notifiable) %></td>
+              <td> <%= notification.message %></td>
+              <td><%= notification.time %></td>
+            </tr>
+            <% end %>
+
+          <% else %><%= render partial: 'layouts/none', locals: {message: 'Nenhuma notificação'} %><% end %>
+
+            </tbody>
+          </table>
+        </div><! --/content-panel -->
+      </div><!-- /col-md-12 -->
+
+
+    </div><!-- row -->
+
+
+
+</section>
+
+
+
+
     <ul>
 
-      <% @notifications.each do |notification| %>
+
       <li>
-        <%= image_tag notification.image_url, height: 50 %>
-        <%= link_to notification.target_name, polymorphic_path(notification.notifiable) %> <%= notification.message %>
-        <strong><%= notification.time %></strong>
+
+
+        <strong></strong>
       </li>
-      <% end %>
+
 
     </ul>
 
 
-<% else %>
-
-    <%= render partial: 'layouts/none', locals: {message: 'Nenhuma notificação'} %>
-
-<% end %>

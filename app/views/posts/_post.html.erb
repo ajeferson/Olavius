@@ -92,6 +92,7 @@
       <% unless all_comments %>
           <span><%= link_to 'Ver todos', post_path(post) %></span>
       <% end %>
+      <p>.</p>
 
       <%= render partial: 'reports/modal_report', locals: {post: post} %>
 
