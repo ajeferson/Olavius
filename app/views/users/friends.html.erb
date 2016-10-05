@@ -1,14 +1,55 @@
+
+
 <h3>Amigos (<%= @users.count %>)</h3>
 
 <% if @users.any? %>
 
+
+
+    <% @users.each do |user| %>
+    <div class="col-lg-4 col-md-4 col-sm-4 mb">
+      <div class="content-panel pn">
+        <div id="profile-02" style="background-color:#424a5d">
+          <div class="user">
+            <%= image_tag user.profile_picture_url, height: 80, class:'img-circle' %>
+            <h4><%= user.name%></h4>
+          </div>
+        </div>
+        <div class="pr2-social centered">
+          <%= link_to "Ver perfil", user_path(user), class:'profile-button-friends-list' %>
+        </div>
+      </div><! --/panel -->
+    </div><!--/ col-md-4 -->
+
+<style>
+
+  .profile-button-friends-list{
+    width:100%;
+    text-align:center;
+    float:left;
+    margin-top:15px;
+
+  }
+</style>
+
+    <% end %>
+
+
     <ul>
-      <% @users.each do |user| %>
+
+
+
+
+
+
+
+
+
           <li>
-            <%= image_tag user.profile_picture_url, height: 50 %>
-            <%= link_to user.name, user_path(user) %>
+
+
           </li>
-      <% end %>
+
     </ul>
 
 <% else %>
