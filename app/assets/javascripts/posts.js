@@ -16,6 +16,7 @@ var postsApi = function() {
 
     function didClickOnPostEditButton() {
         var id = $(this).data('id');
+        console.log($("div[data-id='" + id + "'] .info form"));
         $("div[data-id='" + id + "'] .info form").removeClass('hidden');
     }
 

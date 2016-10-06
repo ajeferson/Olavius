@@ -87,16 +87,18 @@
             </div>
         <% end %>
 
-        <div class="info">
-          <% if post.belongs_to?(current_user) %>
-              <%= form_for post, url: post_path(post), method: :patch, html: {class: 'hidden'}, remote: true do |f| %>
-                  <%= f.text_area :title, :class=>'form-control' %>
-                  <div class="controls-edit" style="float:right; margin:5px 0 0 0">
-                    <%= f.submit 'Salvar', class: 'btn btn-success btn-xs' %>
-                    <span class="btn btn-xs btn-warning btn-post-cancel-edit">Cancelar</span>
-                  </div>
-              <% end %>
-          <% end %>
+        <div class="row">
+          <div class="info col-xs-12">
+            <% if post.belongs_to?(current_user) %>
+                <%= form_for post, url: post_path(post), method: :patch, html: {class: 'hidden'}, remote: true do |f| %>
+                    <%= f.text_area :title, :class=>'form-control' %>
+                    <div class="controls-edit" style="float:right; margin:5px 0 0 0">
+                      <%= f.submit 'Salvar', class: 'btn btn-success btn-xs' %>
+                      <span class="btn btn-xs btn-warning btn-post-cancel-edit">Cancelar</span>
+                    </div>
+                <% end %>
+            <% end %>
+          </div>
         </div>
 
         <p></p>
