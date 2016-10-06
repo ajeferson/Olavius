@@ -27,23 +27,11 @@
 
   </div>
 
-  <div class="top-menu">
-
-    <ul class="nav pull-right top-menu">
-
-      <!--Search-->
-      <li>
-        <%= form_tag search_users_path do %>
-            <%= text_field_tag 'search', params[:search], placeholder: 'Pesquisar' %>
-        <% end %>
-      </li>
-
-      <!--Logout-->
-      <li>
-        <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'logout' %>
-      </li>
-
-    </ul>
+  <%= form_tag search_users_path , class:"search_container" do %>
+      <%= text_field_tag 'search', params[:search], placeholder: 'Pesquisar' , id: 'search_bar', class: 'form-control' %>
+  <% end %>
+  <div id="logout_positioner">
+    <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
   </div>
 
 </header>

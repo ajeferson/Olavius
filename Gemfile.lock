@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/cubus/jquery-sparkline-rails.git
+  remote: https://github.com/cubus/jquery-sparkline-rails
   revision: c5b531f51e3e734710c7561b06c2c829107f9b38
   specs:
     jquery-sparkline-rails (2.1.1)
@@ -210,4 +210,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.12.5

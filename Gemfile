@@ -54,5 +54,5 @@ gem 'font-awesome-rails', '4.6.3.1'
 gem 'backstretch-rails', '2.0.4'
 gem 'nicescroll-rails', '3.5.4.1'
 gem 'jquery-scrollto-rails', '1.4.3'
-gem 'jquery-sparkline-rails', github: 'cubus/jquery-sparkline-rails'
+gem 'jquery-sparkline-rails', :git => 'https://github.com/cubus/jquery-sparkline-rails'
 
