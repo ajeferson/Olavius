@@ -1,4 +1,4 @@
-<h3>Amigos (<%= user.friends.count %>)</h3>
+<h3>Amigos aasdasdasd (<%= user.friends.count %>)</h3>
 
 <% friends = user.friends.limit(20) %>
 
@@ -8,6 +8,7 @@
       <% user.friends.each do |friend| %>
           <li>
             <%= image_tag friend.profile_picture_url, height: 50 %>
+
             <%= link_to friend.name, user_path(friend) %>
           </li>
       <% end %>
