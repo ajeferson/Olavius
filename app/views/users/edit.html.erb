@@ -2,17 +2,17 @@
 
 <%= form_for @user, url: {action: :update, method: :patch} do |f| %>
 
-    <div>
+    <div class="well well-sm none">
       <%= f.label :name %>
-      <%= f.text_field :name, required: true %>
+      <%= f.text_field :name, required: true, class:'form-control', id:'edit_bar' %>
     </div>
 
-    <div>
+    <div class="well well-sm none">
       <%= f.label :email %>
-      <%= f.email_field :email, required: true %>
+      <%= f.email_field :email, required: true, class:'form-control', id:'edit_bar'  %>
     </div>
 
-    <div>
+    <div class="well well-sm none">
       <%= f.label :profile_picture %>
       <%= f.file_field :profile_picture %>
       <p>
@@ -22,7 +22,7 @@
     </div>
 
     <div>
-      <%= f.submit 'Salvar' %>
+      <%= f.submit 'Salvar', class:'btn btn-primary', id:'save_button'%>
     </div>
 
 <% end %>
