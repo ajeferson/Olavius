@@ -1,5 +1,9 @@
-<ul class="comments" style="padding:0; margin:0" data-post-id="<%= post_id %>">
-  <% comments.each do |comment| %>
-      <%= render partial: 'comments/comment', locals: {comment: comment} %>
-  <% end %>
-</ul>
+<div class="row" style="padding: 20px">
+
+  <ul class="comments" style="padding:0; margin:0" data-post-id="<%= post_id %>">
+    <% comments.each do |comment| %>
+        <%= render partial: 'comments/comment', locals: {comment: comment} %>
+    <% end %>
+  </ul>
+
+</div>

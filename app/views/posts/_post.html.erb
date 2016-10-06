@@ -14,7 +14,7 @@
             <span class="caret"></span>
           </button>
 
-          <ul class="dropdown-menu" role="menu">
+          <ul class="dropdown-menu" role="menu" style="transform: translateX(-80%);">
 
             <li>
               <a href="#modal_report_<%= post.id %>" data-toggle="modal">Reportar</a>
@@ -51,17 +51,41 @@
         <%= image_tag post.user.profile_picture_url, height: 50, class:'img-circle'%>
         </div>
 
-        <p class="user">
-          <%= post.user.name%>
-        </p>
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="user">
+              <%= post.user.name%>
+            </p>
+          </div>
+        </div>
 
-        <p class="infos">
-          <a href="<%= post_url(post) %>"><%= l(post.created_at, format: :short) %></a>
-        </p>
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="infos">
+              <a href="<%= post_url(post) %>"><%= l(post.created_at, format: :short) %></a>
+            </p>
+          </div>
+        </div>
 
-        <p>
-          <%= post.title%>
-        </p>
+        <div class="row">
+          <div class="col-xs-12">
+            <h4 style="color: white">
+              <%= post.title %>
+            </h4>
+          </div>
+        </div>
+
+        <% if post.images.any? %>
+            <div class="col-xs-12">
+              <div class="row" style="height: 200px;">
+                <% post.images.each do |image| %>
+                    <div class="col-lg-3 col-sm-6 col-xs-12" style="height: 100%; padding: 10px">
+                      <%= image_tag image.image_url, style: 'width: 100%; height: 100%; object-fit: cover;' %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
 
         <div class="info">
           <% if post.belongs_to?(current_user) %>
@@ -78,8 +102,12 @@
         <p></p>
 
         <!--Likes-->
-        <div class="likes" style="margin-top:-30px">
-          <%= render partial: 'likes/likes', locals: {post: post} %>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="likes" style="margin-top:-30px">
+              <%= render partial: 'likes/likes', locals: {post: post} %>
+            </div>
+          </div>
         </div>
 
         <!--Comments-->

@@ -13,7 +13,7 @@
     </p>
   </li>
 
-  <% current_user.notifications.order(created_at: :desc).limit(20).each do |notification| %>
+  <% current_user.notifications.order(created_at: :desc).limit(5).each do |notification| %>
 
       <li>
 
