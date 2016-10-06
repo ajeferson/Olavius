@@ -20,12 +20,12 @@
         <%= link_to polymorphic_path(notification.notifiable) do %>
 
             <span class="photo">
-              <%#= image_tag notification.target.profile_picture_url %>
+              <%= image_tag notification.target.profile_picture_url %>
             </span>
 
             <span class="subject">
               <span class="from">
-                <%#= notification.target.short_name %>
+                <%= notification.target.short_name %>
               </span>
               <span class="time"><%= notification.time %></span>
             </span>
