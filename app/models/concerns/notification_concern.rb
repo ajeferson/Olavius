@@ -11,7 +11,7 @@ module NotificationConcern extend ActiveSupport::Concern
   end
 
   def target_name
-    return notifiable.short_name if friendship_request? || friendship_accept?
+    return target.short_name
   end
 
   def time
