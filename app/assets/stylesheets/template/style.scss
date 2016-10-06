@@ -26,11 +26,12 @@ ul li {
 a, a:hover, a:focus {
     text-decoration:none;
     outline: none;
-	color:#77a6e2;
+	color:#cdcdcd;
 }
 
 a:hover {
 	text-decoration:underline;
+    color: #68dff0;
 }
 
 ::selection {
@@ -73,7 +74,7 @@ a:hover {
 	background-color: #ffffff;
 	outline: none !important;
 	text-decoration: none;
-}	
+}
 
 
 
@@ -603,6 +604,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .dropdown-menu.inbox li a .message {
     display: block !important;
     font-size: 11px;
+    white-space: normal;
 }
 
 .top-nav  {
@@ -787,7 +789,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	padding: 0 10px;
 	line-height: 40px;
 	height: 40px;
-	margin: 0;
+	margin: 5px;
 	background: #ff865c;
 	text-align: center;
 }
@@ -888,7 +890,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .border-head h3 {
     margin-top: 20px;
     margin-bottom: 20px;
-	margin-left: 15px;	
+	margin-left: 15px;
     padding-bottom: 5px;
     font-weight: normal;
     font-size: 18px;
@@ -998,7 +1000,7 @@ PANELS CONFIGURATIONS
 
 .pn:hover {
 	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
-	
+
 }
 
 /*Grey Panel*/
@@ -1054,7 +1056,7 @@ PANELS CONFIGURATIONS
 	color: white;
 }
 .darkblue-panel footer h5 {
-	margin-left:10px; 
+	margin-left:10px;
 	margin-right: 10px;
 	font-weight: 700;
 }
@@ -1121,7 +1123,7 @@ PANELS CONFIGURATIONS
 .card {
   background: white;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
-  margin-bottom: 1em; 
+  margin-bottom: 1em;
   height: 250px;
 }
 .stock .stock-chart {
@@ -1129,11 +1131,11 @@ PANELS CONFIGURATIONS
 }
 .stock .stock-chart #chart {
     height: 10.7em;
-    background: url(http://i.imgbox.com/abmuNQx2) center bottom no-repeat; 
-}    
+    background: url(http://i.imgbox.com/abmuNQx2) center bottom no-repeat;
+}
 .stock .current-price {
   background: #1d2122;
-  padding: 10px; 
+  padding: 10px;
 }
 .stock .current-price .info abbr {
     display: block;
@@ -1143,14 +1145,14 @@ PANELS CONFIGURATIONS
     margin-top: 0.18em;
 }
 .stock .current-price .changes {
-    text-align: right; 
+    text-align: right;
 }
 .stock .changes .up {
 	color: #4fd98b
 }
 .stock .current-price .changes .value {
       font-size: 1.8em;
-      font-weight: 700; 
+      font-weight: 700;
 }
 .stock .summary {
     color: #2f2f2f;
@@ -1717,7 +1719,7 @@ PANELS CONFIGURATIONS
   -moz-transition: opacity 0.4s;
   -o-transition: opacity 0.4s;
   transition: opacity 0.4s;
-  
+
 }
 
 .project:hover .photo-wrapper {
@@ -2272,18 +2274,19 @@ label {
 
 #logout_positioner{
   float: right;
-  line-height: 60px;
-  display: inline-block;
+  margin-top: -35px;
 }
 
 .search_container {
-  position: absolute;
-  top: 13px;
-  left: 390px;
+  margin-top: 13px;
 }
 
 #search_bar{
   width: 500px;
+}
+
+#excluir_conta_button{
+  margin-left: 40px;
 }
 
 
