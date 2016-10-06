@@ -1,54 +1,58 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h4>
+      <i class="fa fa-angle-right"></i> Grupos
+      <%= link_to 'Novo Grupo', new_user_group_path(current_user), class: 'btn btn-primary', style:'float:right; margin-right:10px; margin-top:-10px'%>
+    </h4>
+  </div>
+</div>
 
-    <% if @groups.any? %>
+<% if @groups.any? %>
 
-<section class="wrapper">
+    <section class="wrapper">
 
-  <div class="row">
+      <div class="row">
 
-    <div class="col-md-12">
-      <div class="content-panel">
-        <h4>
-          <i class="fa fa-angle-right"></i> Grupos
-          <%= link_to 'Novo Grupo', new_user_group_path(current_user), class: 'btn btn-primary', style:'float:right; margin-right:10px; margin-top:-10px'%>
-        </h4>
+        <div class="col-md-12">
+          <div class="content-panel">
 
-        <hr>
-        <table class="table">
-          <thead>
-          <tr>
-            <th></th>
-            <th>Nome do grupo</th>
-            <th>Dono do grupo?</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-
-
-          <% @groups.each do |group| %>
+            <hr>
+            <table class="table">
+              <thead>
               <tr>
-                <td></td>
-                <td><%= link_to group.name, group %></td>
-
-                <td><%= @user.owner_of?(group) ? "Sim" : "Não"%></td>
-                <td></td>
+                <th></th>
+                <th>Nome do grupo</th>
+                <th>Dono do grupo?</th>
+                <th></th>
               </tr>
-          <% end %>
+              </thead>
+              <tbody>
+
+
+              <% @groups.each do |group| %>
+                  <tr>
+                    <td></td>
+                    <td><%= link_to group.name, group %></td>
+
+                    <td><%= @user.owner_of?(group) ? "Sim" : "Não"%></td>
+                    <td></td>
+                  </tr>
+              <% end %>
 
 
 
-          </tbody>
-        </table>
-      </div><! --/content-panel -->
-    </div><!-- /col-md-12 -->
+              </tbody>
+            </table>
+          </div><! --/content-panel -->
+        </div><!-- /col-md-12 -->
 
 
-  </div><!-- row -->
+      </div><!-- row -->
 
 
 
-</section>
+    </section>
 
 <% else %>
-<%= render partial: 'layouts/none', locals: {message: 'Nenhum grupo'} %>
+    <%= render partial: 'layouts/none', locals: {message: 'Nenhum grupo'} %>
 <% end %>
