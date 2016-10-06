@@ -1,74 +1,61 @@
 
 <% if @notifications.any? %>
 
-
-
-
-
-
-
-
-
-
-
-
-
     <section class="wrapper">
 
-    <div class="row">
+      <div class="row">
 
-      <div class="col-md-12">
-        <div class="content-panel">
-          <h4><i class="fa fa-angle-right"></i> Notificações</h4>
-          <hr>
-          <table class="table">
-            <thead>
-            <tr>
-              <th></th>
-              <th>Usuário</th>
-              <th>Notificação</th>
-              <th>Data</th>
-            </tr>
-            </thead>
-            <tbody>
+        <div class="col-md-12">
 
+          <div class="content-panel">
 
-            <% @notifications.each do |notification| %>
-            <tr>
-              <td></td>
-              <td><%= link_to notification.target_name, polymorphic_path(notification.notifiable) %></td>
-              <td> <%= notification.message %></td>
-              <td><%= notification.time %></td>
-            </tr>
-            <% end %>
+            <h4><i class="fa fa-angle-right"></i> Notificações</h4>
 
-          <% else %><%= render partial: 'layouts/none', locals: {message: 'Nenhuma notificação'} %><% end %>
+            <hr>
 
-            </tbody>
-          </table>
-        </div><! --/content-panel -->
-      </div><!-- /col-md-12 -->
+            <table class="table">
+
+              <thead>
+
+              <tr>
+                <th></th>
+                <th>Usuário</th>
+                <th>Notificação</th>
+                <th>Data</th>
+              </tr>
+
+              </thead>
+
+              <tbody>
 
 
-    </div><!-- row -->
+              <% @notifications.each do |notification| %>
+                  <tr>
+                    <td></td>
+                    <td><%= link_to notification.target_name, polymorphic_path(notification.notifiable) %></td>
+                    <td> <%= notification.message %></td>
+                    <td><%= notification.time %></td>
+                  </tr>
+              <% end %>
+
+<% else %><%= render partial: 'layouts/none', locals: {message: 'Nenhuma notificação'} %><% end %>
+
+</tbody>
+</table>
+</div>
+</div>
 
 
+</div>
 
 </section>
 
+<ul>
 
+  <li>
+    <strong></strong>
+  </li>
 
-
-    <ul>
-
-
-      <li>
-
-
-        <strong></strong>
-      </li>
-
-
-    </ul>
+</ul>
 
 

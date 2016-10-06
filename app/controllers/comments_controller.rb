@@ -7,7 +7,9 @@ class CommentsController < ApplicationController
   # POST /posts/:post_id/comments
   def create
     @comment.save
-    @comment.post.user.notifications.create(notifiable: @comment.post, target: @comment.user, kind: :comment)
+    if !@comment.post.belongs_to?(current_user)
+      @comment.post.user.notifications.create(notifiable: @comment.post, target: @comment.user, kind: :comment)
+    end
   end
 
   def update
