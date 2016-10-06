@@ -1,17 +1,65 @@
-<section class="wrapper">
 
 <h1>Configurações de conta</h1>
 
 
 
-<%= link_to 'Excluir conta',
-            account_settings_path,
-            class:'btn btn-primary',
-            id:'excluir_conta_button',
-            method: :delete,
-            data: {
-                confirm: 'Sua conta será excluida. Deseja prosseguir?'
-            } %>
+
+
+
+
+
+
+
+
+
+
+<section class="wrapper">
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="content-panel">
+        <h4><i class="fa fa-angle-right"></i> Configurações</h4>
+        <hr>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Módulo</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>
+
+              <i class="fa fa-trash" aria-hidden="true"></i>
+
+              <%= link_to 'Excluir conta',
+                          account_settings_path,
+                          style:'color:#337ab7; margin-left:4px',
+                          id:'excluir_conta_button',
+                          method: :delete,
+                          data: {
+                              confirm: 'Sua conta será excluida. Deseja prosseguir?'
+                          } %>
+
+
+
+
+
+
+
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div><! --/content-panel -->
+    </div><!-- /col-md-12 -->
+
+
+  </div><!-- row -->
+
 
 
 </section>
