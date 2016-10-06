@@ -1,105 +1,107 @@
-<div class="post" data-id="<%= post.id %>">
+<div class="row">
 
-  <div class="col-lg-4 col-md-4 col-sm-4 mb">
+  <div class="col-xs-12 mb">
 
-    <div class="twitter-panel pn">
+    <div class="post" data-id="<%= post.id %>">
 
-      <!--Botao de acoes -->
-      <div class="btn-group" style="float:right;">
+      <div class="twitter-panel pn">
 
-        <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
-          <i class="fa fa-cog" aria-hidden="true" style="margin:0"></i>
-          <span class="caret"></span>
-        </button>
+        <!--Botao de acoes -->
+        <div class="btn-group" style="float:right;">
 
-        <ul class="dropdown-menu" role="menu">
+          <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-cog" aria-hidden="true" style="margin:0"></i>
+            <span class="caret"></span>
+          </button>
 
-          <li>
-            <a href="#modal_report_<%= post.id %>" data-toggle="modal">Reportar</a>
-          </li>
+          <ul class="dropdown-menu" role="menu">
 
-          <% if post.belongs_to?(current_user) || current_user.admin? %>
+            <li>
+              <a href="#modal_report_<%= post.id %>" data-toggle="modal">Reportar</a>
+            </li>
 
-              <li>
-                <%= link_to post_path(post),
-                            method: :delete,
-                            data: {
-                                confirm: 'O post será excluído. Deseja prosseguir?'
-                            },
-                            remote: remote_delete do %>
-                    Excluir post
-                <% end %>
-              </li>
+            <% if post.belongs_to?(current_user) || current_user.admin? %>
 
-              <li>
-                <a><span class="btn-post-edit" data-id="<%= post.id %>">Editar</span></a>
-              </li>
+                <li>
+                  <%= link_to post_path(post),
+                              method: :delete,
+                              data: {
+                                  confirm: 'O post será excluído. Deseja prosseguir?'
+                              },
+                              remote: remote_delete do %>
+                      Excluir post
+                  <% end %>
+                </li>
 
-          <% end %>
+                <li>
+                  <a><span class="btn-post-edit" data-id="<%= post.id %>">Editar</span></a>
+                </li>
 
-        </ul>
-
-      </div>
-
-      <% if post.belongs_to?(current_user) || current_user.admin? %>
-          <div style="margin-left:40px">
-      <% else%>
-          <div>
-      <%end%>
-      <%= image_tag post.user.profile_picture_url, height: 50, class:'img-circle'%>
-      </div>
-
-      <p class="user">
-        <%= post.user.name%>
-      </p>
-
-      <p class="infos">
-        <a href="<%= post_url(post) %>"><%= l(post.created_at, format: :short) %></a>
-      </p>
-
-      <p>
-        <%= post.title%>
-      </p>
-
-      <div class="info">
-        <% if post.belongs_to?(current_user) %>
-            <%= form_for post, url: post_path(post), method: :patch, html: {class: 'hidden'}, remote: true do |f| %>
-                <%= f.text_area :title, :class=>'form-control' %>
-                <div class="controls-edit" style="float:right; margin:5px 0 0 0">
-                  <%= f.submit 'Salvar', class: 'btn btn-success btn-xs' %>
-                  <span class="btn btn-xs btn-warning btn-post-cancel-edit">Cancelar</span>
-                </div>
             <% end %>
+
+          </ul>
+
+        </div>
+
+        <% if post.belongs_to?(current_user) || current_user.admin? %>
+            <div style="margin-left:40px">
+        <% else%>
+            <div>
+        <%end%>
+        <%= image_tag post.user.profile_picture_url, height: 50, class:'img-circle'%>
+        </div>
+
+        <p class="user">
+          <%= post.user.name%>
+        </p>
+
+        <p class="infos">
+          <a href="<%= post_url(post) %>"><%= l(post.created_at, format: :short) %></a>
+        </p>
+
+        <p>
+          <%= post.title%>
+        </p>
+
+        <div class="info">
+          <% if post.belongs_to?(current_user) %>
+              <%= form_for post, url: post_path(post), method: :patch, html: {class: 'hidden'}, remote: true do |f| %>
+                  <%= f.text_area :title, :class=>'form-control' %>
+                  <div class="controls-edit" style="float:right; margin:5px 0 0 0">
+                    <%= f.submit 'Salvar', class: 'btn btn-success btn-xs' %>
+                    <span class="btn btn-xs btn-warning btn-post-cancel-edit">Cancelar</span>
+                  </div>
+              <% end %>
+          <% end %>
+        </div>
+
+        <p></p>
+
+        <!--Likes-->
+        <div class="likes" style="margin-top:-30px">
+          <%= render partial: 'likes/likes', locals: {post: post} %>
+        </div>
+
+        <!--Comments-->
+        <span style="color:#fff"><i class="fa fa-comment" aria-hidden="true" style="margin:10px 5px 10px 0"></i> <span class="comments-count"><%= post.comments.count %></span> Comentários</span>
+
+        <%= render partial: 'comments/create_comment', locals: {post: post} %>
+        <% comments = post.comments.order(created_at: :desc) %>
+        <% comments = comments.limit(5) unless all_comments %>
+        <%= render partial: 'comments/comments', locals: {comments: comments, post_id: post.id} %>
+
+        <% unless all_comments %>
+            <span><%= link_to 'Ver todos', post_path(post) %></span>
         <% end %>
-      </div>
 
+        <%= render partial: 'reports/modal_report', locals: {post: post} %>
 
-      <p></p>
+        </div><!-- alguma div que fecha o quadrado azul, deve ser a do twitter, but i'm not sure :/ -->
 
-      <!--Likes-->
-      <div class="likes" style="margin-top:-30px">
-        <%= render partial: 'likes/likes', locals: {post: post} %>
-      </div>
+      </div><!-- /col-md-4 -->
 
-      <!--Comments-->
-      <span style="color:#fff"><i class="fa fa-comment" aria-hidden="true" style="margin:10px 5px 10px 0"></i> <span class="comments-count"><%= post.comments.count %></span> Comentários</span>
+    </div><!--post end-->
 
-      <%= render partial: 'comments/create_comment', locals: {post: post} %>
-      <% comments = post.comments.order(created_at: :desc) %>
-      <% comments = comments.limit(5) unless all_comments %>
-      <%= render partial: 'comments/comments', locals: {comments: comments, post_id: post.id} %>
-
-      <% unless all_comments %>
-          <span><%= link_to 'Ver todos', post_path(post) %></span>
-      <% end %>
-      <p>.</p>
-
-      <%= render partial: 'reports/modal_report', locals: {post: post} %>
-
-      </div><!-- alguma div que fecha o quadrado azul, deve ser a do twitter, but i'm not sure :/ -->
-
-    </div><!-- /col-md-4 -->
-
-  </div><!--post end-->
+  </div>
 
 </div>
