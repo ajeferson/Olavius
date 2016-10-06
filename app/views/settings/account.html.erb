@@ -1,9 +1,17 @@
+<section class="wrapper">
+
 <h1>Configurações de conta</h1>
+
+
 
 <%= link_to 'Excluir conta',
             account_settings_path,
+            class:'btn btn-primary',
             id:'excluir_conta_button',
             method: :delete,
             data: {
                 confirm: 'Sua conta será excluida. Deseja prosseguir?'
             } %>
+
+
+</section>
